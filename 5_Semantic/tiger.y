@@ -169,6 +169,7 @@ fieldvar
 
 subscriptvar
             : ID LBRACK exp RBRACK		{$$ = A_SubscriptVar(EM_tokPos, A_SimpleVar(EM_tokPos, S_Symbol($1)), $3);}
+			| subscriptvar LBRACK exp RBRACK		{$$ = A_SubscriptVar(EM_tokPos, $1, $3);}
 			;
 
 vardec

@@ -136,6 +136,7 @@ fieldvar
 
 subscriptvar
             : ID LBRACK exp RBRACK
+			| subscriptvar LBRACK exp RBRACK
 			;
 
 vardec
