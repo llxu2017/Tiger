@@ -42,6 +42,12 @@
     <ClInclude Include="tiger.tab.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="env.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="semant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="absyn.c">
@@ -74,10 +80,14 @@
     <ClCompile Include="tiger.tab.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="semant.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="env.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="tiger.y">
-      <Filter>Resource Files</Filter>
-    </None>
+    <Bison Include="tiger.y" />
   </ItemGroup>
 </Project>

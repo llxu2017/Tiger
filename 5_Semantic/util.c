@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "util.h"
+
+// Not freeing memory. Allow leak for now.
 void *checked_malloc(int len)
 {
 	void *p = malloc(len);
