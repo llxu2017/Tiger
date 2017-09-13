@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}</ProjectGuid>
+    <RootNamespace>My1_Tests</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="Bad\1.tig" />
+    <None Include="Bad\10.tig" />
+    <None Include="Bad\11.tig" />
+    <None Include="Bad\12.tig" />
+    <None Include="Bad\13.tig" />
+    <None Include="Bad\14.tig" />
+    <None Include="Bad\15.tig" />
+    <None Include="Bad\16.tig" />
+    <None Include="Bad\17.tig" />
+    <None Include="Bad\18.tig" />
+    <None Include="Bad\19.tig" />
+    <None Include="Bad\2.tig" />
+    <None Include="Bad\20.tig" />
+    <None Include="Bad\21.tig" />
+    <None Include="Bad\22.tig" />
+    <None Include="Bad\23.tig" />
+    <None Include="Bad\24.tig" />
+    <None Include="Bad\25.tig" />
+    <None Include="Bad\26.tig" />
+    <None Include="Bad\27.tig" />
+    <None Include="Bad\28.tig" />
+    <None Include="Bad\29.tig" />
+    <None Include="Bad\3.tig" />
+    <None Include="Bad\30.tig" />
+    <None Include="Bad\31.tig" />
+    <None Include="Bad\32.tig" />
+    <None Include="Bad\33.tig" />
+    <None Include="Bad\34.tig" />
+    <None Include="Bad\4.tig" />
+    <None Include="Bad\5.tig" />
+    <None Include="Bad\6.tig" />
+    <None Include="Bad\7.tig" />
+    <None Include="Bad\8.tig" />
+    <None Include="Bad\9.tig" />
+    <None Include="Good\1.tig" />
+    <None Include="Good\10.tig" />
+    <None Include="Good\11.tig" />
+    <None Include="Good\12.tig" />
+    <None Include="Good\13.tig" />
+    <None Include="Good\14.tig" />
+    <None Include="Good\15.tig" />
+    <None Include="Good\16.tig" />
+    <None Include="Good\17.tig" />
+    <None Include="Good\18.tig" />
+    <None Include="Good\19.tig" />
+    <None Include="Good\2.tig" />
+    <None Include="Good\20.tig" />
+    <None Include="Good\21.tig" />
+    <None Include="Good\22.tig" />
+    <None Include="Good\23.tig" />
+    <None Include="Good\24.tig" />
+    <None Include="Good\25.tig" />
+    <None Include="Good\26.tig" />
+    <None Include="Good\27.tig" />
+    <None Include="Good\28.tig" />
+    <None Include="Good\29.tig" />
+    <None Include="Good\3.tig" />
+    <None Include="Good\30.tig" />
+    <None Include="Good\31.tig" />
+    <None Include="Good\32.tig" />
+    <None Include="Good\33.tig" />
+    <None Include="Good\34.tig" />
+    <None Include="Good\35.tig" />
+    <None Include="Good\36.tig" />
+    <None Include="Good\37.tig" />
+    <None Include="Good\38.tig" />
+    <None Include="Good\39.tig" />
+    <None Include="Good\4.tig" />
+    <None Include="Good\40.tig" />
+    <None Include="Good\41.tig" />
+    <None Include="Good\42.tig" />
+    <None Include="Good\43.tig" />
+    <None Include="Good\44.tig" />
+    <None Include="Good\45.tig" />
+    <None Include="Good\46.tig" />
+    <None Include="Good\47.tig" />
+    <None Include="Good\48.tig" />
+    <None Include="Good\49.tig" />
+    <None Include="Good\5.tig" />
+    <None Include="Good\50.tig" />
+    <None Include="Good\51.tig" />
+    <None Include="Good\52.tig" />
+    <None Include="Good\53.tig" />
+    <None Include="Good\54.tig" />
+    <None Include="Good\55.tig" />
+    <None Include="Good\56.tig" />
+    <None Include="Good\57.tig" />
+    <None Include="Good\58.tig" />
+    <None Include="Good\59.tig" />
+    <None Include="Good\6.tig" />
+    <None Include="Good\7.tig" />
+    <None Include="Good\8.tig" />
+    <None Include="Good\9.tig" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Good">
+      <UniqueIdentifier>{83b1a02b-7b7a-4a49-b512-42dfa1cde9a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Bad">
+      <UniqueIdentifier>{3df2186c-4072-4965-9886-6f1438dd6055}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Good\1.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\2.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\3.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\4.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\5.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\6.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\7.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\8.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\9.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\10.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\11.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\12.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\13.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\14.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\15.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\16.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\17.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\18.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\19.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\20.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\21.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\22.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\23.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\24.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\25.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\26.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\27.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\28.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\29.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\30.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\31.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\32.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\33.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\34.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\35.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\36.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\37.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\38.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\39.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\40.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\41.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\42.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\43.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\44.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\45.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\46.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\47.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\48.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\49.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\50.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\51.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\52.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\53.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\54.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\55.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\56.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\57.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\58.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Good\59.tig">
+      <Filter>Resource Files\Good</Filter>
+    </None>
+    <None Include="Bad\1.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\2.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\3.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\4.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\5.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\6.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\7.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\8.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\9.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\10.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\11.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\12.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\13.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\14.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\15.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\16.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\17.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\18.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\19.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\20.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\21.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\22.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\23.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\24.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\25.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\26.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\27.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\28.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\29.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\30.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\31.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\32.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\33.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Bad\34.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
+  </ItemGroup>
+</Project>

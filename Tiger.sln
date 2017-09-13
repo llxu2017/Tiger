@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2_Lexical_Analysis", "2_Lexical_Analysis\2_Lexical_Analysis.vcxproj", "{CAC5D958-77ED-4B37-8B0C-B7EB5CB363DC}"
 EndProject
@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5_Semantic", "5_Semantic\5_
 	ProjectSection(ProjectDependencies) = postProject
 		{CAC5D958-77ED-4B37-8B0C-B7EB5CB363DC} = {CAC5D958-77ED-4B37-8B0C-B7EB5CB363DC}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1_Tests", "1_Tests\1_Tests.vcxproj", "{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,14 @@ Global
 		{D4662598-A64D-4D06-B067-3CB59B03221F}.Release|x64.Build.0 = Release|x64
 		{D4662598-A64D-4D06-B067-3CB59B03221F}.Release|x86.ActiveCfg = Release|Win32
 		{D4662598-A64D-4D06-B067-3CB59B03221F}.Release|x86.Build.0 = Release|Win32
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Debug|x64.ActiveCfg = Debug|x64
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Debug|x64.Build.0 = Debug|x64
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Debug|x86.ActiveCfg = Debug|Win32
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Debug|x86.Build.0 = Debug|Win32
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Release|x64.ActiveCfg = Release|x64
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Release|x64.Build.0 = Release|x64
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Release|x86.ActiveCfg = Release|Win32
+		{01DF3AFD-2742-4D7E-AF3A-8A24CD540614}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
