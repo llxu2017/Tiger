@@ -11,14 +11,6 @@ struct expty expTy(Tr_exp exp, Ty_ty ty)
 	return e;
 }
 
-E_enventry E_VarEntry(Ty_ty ty)
-{
-	E_enventry p = checked_malloc(sizeof(*p));
-	p->kind = E_varEntry;
-	p->u.var.ty = ty;
-	return p;
-}
-
 Ty_ty actual_ty(Ty_ty ty)
 {
 	// TO DO: detect cyclic declaration

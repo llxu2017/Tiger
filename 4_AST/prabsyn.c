@@ -127,7 +127,7 @@ void pr_exp(FILE *out, A_exp v, int d) {
  case A_letExp:
    fprintf(out, "letExp(\n");
    pr_decList(out, v->u.let.decs, d+1); fprintf(out, ",\n");
-   pr_exp(out, v->u.let.body, d+1); fprintf(out, ")");
+   pr_expList(out, v->u.let.body, d+1); fprintf(out, ")");
    break;
  case A_arrayExp:
    fprintf(out, "arrayExp(%s,\n", S_name(v->u.array.typ));

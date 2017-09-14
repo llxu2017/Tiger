@@ -126,6 +126,7 @@ type					{adjust(); return TYPE;}
 	/* punctuations */
 " "						{adjust(); continue;}
 "\t"					{adjust(); continue;}
+"\r"					{adjust(); continue;}
 ","						{adjust(); return COMMA;}
 ":"						{adjust(); return COLON;}
 ";"						{adjust(); return SEMICOLON;}

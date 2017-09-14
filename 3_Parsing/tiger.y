@@ -123,7 +123,6 @@ var
    : simplevar
    | fieldvar
    | subscriptvar
-   | var DOT var
    ;
 
 simplevar
@@ -131,12 +130,12 @@ simplevar
 		 ;
 
 fieldvar
-        : VAR ID COLON ID
+        : var DOT ID
 		;
 
 subscriptvar
             : ID LBRACK exp RBRACK
-			| subscriptvar LBRACK exp RBRACK
+			| var LBRACK exp RBRACK
 			;
 
 vardec
@@ -214,7 +213,7 @@ callexp
 	   ;
 
 seqexp
-      : explist
+      : LPAREN explist RPAREN
 	  ;
 
 assignexp
@@ -226,7 +225,7 @@ breakexp
 		;
 
 letexp
-      : LET declist IN seqexp END
+      : LET declist IN explist END
 	  ;
 
 exp
@@ -237,7 +236,7 @@ exp
    | callexp
    | opexp
    | recordexp
-   | LPAREN seqexp RPAREN
+   | seqexp
    | assignexp
    | ifexp
    | whileexp

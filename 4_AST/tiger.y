@@ -156,7 +156,6 @@ var
    : simplevar		{$$ = $1;}
    | fieldvar		{$$ = $1;}
    | subscriptvar		{$$ = $1;}
-   | var DOT var
    ;
 
 simplevar
@@ -164,12 +163,12 @@ simplevar
 		 ;
 
 fieldvar
-        : VAR ID COLON ID		{$$ = A_FieldVar(EM_tokPos, A_SimpleVar(EM_tokPos, S_Symbol($2)), S_Symbol($4));}
+        : var DOT ID		{$$ = A_FieldVar(EM_tokPos, $1, S_Symbol($3));}
 		;
 
 subscriptvar
             : ID LBRACK exp RBRACK		{$$ = A_SubscriptVar(EM_tokPos, A_SimpleVar(EM_tokPos, S_Symbol($1)), $3);}
-			| subscriptvar LBRACK exp RBRACK		{$$ = A_SubscriptVar(EM_tokPos, $1, $3);}
+			| var LBRACK exp RBRACK		{$$ = A_SubscriptVar(EM_tokPos, $1, $3);}
 			;
 
 vardec
@@ -247,7 +246,7 @@ callexp
 	   ;
 
 seqexp
-      : explist		{$$ = A_SeqExp(EM_tokPos, $1);}
+      : LPAREN explist RPAREN		{$$ = A_SeqExp(EM_tokPos, $2);}
 	  ;
 
 assignexp
@@ -259,8 +258,7 @@ breakexp
 		;
 
 letexp
-      : LET declist IN seqexp END		{$$ = A_LetExp(EM_tokPos, $2, $4);}
-	  | LET declist IN exp END		{$$ = A_LetExp(EM_tokPos, $2, $4);}
+      : LET declist IN explist END		{$$ = A_LetExp(EM_tokPos, $2, $4);}
 	  ;
 
 exp
@@ -271,7 +269,7 @@ exp
    | callexp		{$$ = $1;}
    | opexp		{$$ = $1;}
    | recordexp		{$$ = $1;}
-   | LPAREN seqexp RPAREN		{$$ = $2;}
+   | seqexp		{$$ = $1;}
    | assignexp		{$$ = $1;}
    | ifexp		{$$ = $1;}
    | whileexp		{$$ = $1;}
@@ -280,6 +278,3 @@ exp
    | letexp		{$$ = $1;}
    | arrayexp		{$$ = $1;}
    ;
-
-
-	

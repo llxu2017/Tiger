@@ -146,7 +146,7 @@ A_exp A_BreakExp(A_pos pos)
  return p;
 }
 
-A_exp A_LetExp(A_pos pos, A_decList decs, A_exp body)
+A_exp A_LetExp(A_pos pos, A_decList decs, A_expList body)
 {A_exp p = checked_malloc(sizeof(*p));
  p->kind=A_letExp;
  p->pos=pos;
