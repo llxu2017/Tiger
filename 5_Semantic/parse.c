@@ -27,15 +27,18 @@ int main()
 	char buf[100];
 	int file = 1;
 	FILE *fp = fopen("tree.txt", "w");
-	const j = 2;
-	for (i = j; i < j + 1; ++i)
+	const j = 4;
+	for (i = 1; i < 4; ++i)
 	{
 		fprintf(fp, "%d:\n", i);
 		snprintf(buf, 100, "%s%d%s", "D:\\tiger\\tiger\\testcases\\test", i, ".tig");
 		absyn_root = parse(buf);
-		pr_exp(fp, absyn_root, 0);
-		fprintf(fp, "\n");
-		SEM_transProg(absyn_root);
+		if (absyn_root) {
+			pr_exp(fp, absyn_root, 0);
+			fprintf(fp, "\n");
+			SEM_transProg(absyn_root);
+		}
+
 	}
 	//{
 	//	fprintf(fp, "%s:", "merge");
