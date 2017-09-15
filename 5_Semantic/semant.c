@@ -88,7 +88,7 @@ struct expty handle_recordExp(S_table venv, S_table tenv, A_exp a)
 		exit(0);
 	}
 
-	exp.ty = Ty_Record(x);
+	exp.ty = x;
 	return exp;
 }
 
@@ -101,7 +101,14 @@ struct expty handle_seqExp(S_table venv, S_table tenv, A_exp a)
 struct expty handle_assignExp(S_table venv, S_table tenv, A_exp a)
 {
 	struct expty exp = { NULL };
-	assert(0);
+	struct expty tmp = { NULL };
+	tmp = transExp(venv, tenv, a->u.assign.exp);
+	exp = transVar(venv, tenv, a->u.assign.var);
+	if (actual_ty(exp.ty)->kind != actual_ty(tmp.ty)->kind) {
+		EM_error(a->pos, "assignment type mismatch.\n");
+		exit(0);
+	}
+	return exp;
 }
 
 struct expty handle_letExp(S_table venv, S_table tenv, A_exp a)
@@ -112,7 +119,9 @@ struct expty handle_letExp(S_table venv, S_table tenv, A_exp a)
 	S_beginScope(tenv);
 	for (d = a->u.let.decs; d; d = d->tail)
 		transDec(venv, tenv, d->head);
-	exp = transExp(venv, tenv, a->u.let.body);
+	A_expList e;
+	for(e = a->u.let.body; e; e = e->tail)
+	    exp = transExp(venv, tenv, e->head);
 	S_endScope(tenv);
 	S_endScope(venv);
 	return exp;
@@ -137,7 +146,7 @@ struct expty handle_arrayExp(S_table venv, S_table tenv, A_exp a)
 	struct expty init = transExp(venv, tenv, a->u.array.init);
 	if (actual_ty(init.ty)->kind != actual_ty(x->u.array)->kind)
 		EM_error(a->pos, "array initializer must be of the same type as array.");
-	exp.ty = Ty_Array(x);
+	exp.ty = x;
 	return exp;
 }
 
@@ -169,13 +178,35 @@ struct expty transVar(S_table venv, S_table tenv, A_var v)
 	switch (v->kind) {
 	case A_simpleVar: {
 		E_enventry x = S_look(venv, v->u.simple);
+		if (!x) {
+			EM_error(v->pos, "undefined variable \"%s\".\n", S_name(v->u.simple));
+			exit(0);
+		}
 		if (x && x->kind == E_varEntry)
 			return expTy(NULL, actual_ty(x->u.var.ty));
 		else {
 			EM_error(v->pos, "undefined variable \"%s\".\n", S_name(v->u.simple));
-			return expTy(NULL, Ty_Int());
+			exit(0);
+			//return expTy(NULL, Ty_Int());
 		}
-	case A_fieldVar:
+	case A_fieldVar: {
+		E_enventry x = S_look(venv, v->u.field.var->u.simple);
+		if (!x) {
+			EM_error(v->pos, "undefined variable \"%s\".\n", S_name(v->u.field.var->u.simple));
+			exit(0);
+		}
+		S_symbol sym = v->u.field.sym;
+		Ty_fieldList f;
+		for (f = x->u.var.ty->u.record; f; f = f->tail) {
+			if (f->head->name != sym) continue;
+			break;
+		}
+		if (!f) {
+			EM_error(v->pos, "undefined field name \"%s\".\n", S_name(sym));
+			exit(0);
+		}
+		return expTy(NULL, actual_ty(f->head->ty));
+	}
 	case A_subscriptVar:
 	default:
 		assert(0);
@@ -209,7 +240,9 @@ void transDec(S_table venv, S_table tenv, A_dec d)
 			S_enter(tenv, a->head->name, transTy(tenv, a->head->ty));
 		break;
 	}
-	case A_functionDec:
+	case A_functionDec: {
+		A_fundecList f;
+	}
 	default:
 		assert(0);
 	}
