@@ -27,7 +27,7 @@ int main()
 	char buf[100];
 	int file = 1;
 	FILE *fp = fopen("tree.txt", "w");
-	const j = 5;
+	const j = 11;
 	for (i = 1; i < j; ++i)
 	{
 		fprintf(fp, "%d:\n", i);
