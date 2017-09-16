@@ -1,2 +1,2 @@
 # Tiger
-Implementation of tiger compiler.
+Implementation of tiger compiler by Linlin Xu.
