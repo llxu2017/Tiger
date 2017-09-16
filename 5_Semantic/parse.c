@@ -27,9 +27,10 @@ int main()
 	char buf[100];
 	int file = 1;
 	FILE *fp = fopen("tree.txt", "w");
-	const j = 11;
-	for (i = 1; i < j; ++i)
+	const int j = 13;
+	for (i = 12; i < j; ++i)
 	{
+		printf("%d\n", i);
 		fprintf(fp, "%d:\n", i);
 		snprintf(buf, 100, "%s%d%s", "D:\\tiger\\tiger\\testcases\\test", i, ".tig");
 		absyn_root = parse(buf);

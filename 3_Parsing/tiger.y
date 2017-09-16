@@ -181,7 +181,7 @@ whileexp
 	    ;
 
 forexp
-      : FOR var ASSIGN exp TO exp DO exp
+      : FOR ID ASSIGN exp TO exp DO exp
       ;
 
 arrayexp

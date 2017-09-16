@@ -214,7 +214,7 @@ whileexp
 	    ;
 
 forexp
-      : FOR var ASSIGN exp TO exp DO exp		{$$ = A_ForExp(EM_tokPos, S_Symbol($2), $4, $6, $8);}
+      : FOR ID ASSIGN exp TO exp DO exp		{$$ = A_ForExp(EM_tokPos, S_Symbol($2), $4, $6, $8);}
       ;
 
 arrayexp

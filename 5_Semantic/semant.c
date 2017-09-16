@@ -6,6 +6,8 @@
 #define MAX_PARAM 256	// Maximum number of fields length
 
 static int rescan = 0;
+static int infor = 0;
+S_symbol for_idx;
 
 struct expty expTy(Tr_exp exp, Ty_ty ty)
 {
@@ -135,6 +137,10 @@ static struct expty handle_seqExp(S_table venv, S_table tenv, A_exp a)
 {
 	struct expty exp = { NULL };
 	A_expList e;
+	if (!a->u.seq) {
+		exp.ty = Ty_Void();
+		return exp;
+	}
 	for (e = a->u.seq; e; e = e->tail)
 		exp = transExp(venv, tenv, e->head);
 	return exp;
@@ -142,6 +148,10 @@ static struct expty handle_seqExp(S_table venv, S_table tenv, A_exp a)
 
 static struct expty handle_assignExp(S_table venv, S_table tenv, A_exp a)
 {
+	if (infor && a->u.assign.var->u.simple == for_idx) {
+		EM_error(a->u.assign.var->pos, "Cannot modify for loop index.\n");
+		exit(0);
+	}
 	struct expty exp = { NULL };
 	struct expty tmp = { NULL };
 	tmp = transExp(venv, tenv, a->u.assign.exp);
@@ -166,12 +176,66 @@ static struct expty handle_ifExp(S_table venv, S_table tenv, A_exp a)
 	then = transExp(venv, tenv, a->u.iff.then);
 	if (a->u.iff.elsee) {
 		elsee = transExp(venv, tenv, a->u.iff.elsee);
+		if (actual_ty(then.ty)->kind == Ty_Void && actual_ty(elsee.ty)->kind == Ty_Void)
+			return then;
 		if (actual_ty(then.ty)->kind != actual_ty(elsee.ty)->kind) {
 			EM_error(a->u.iff.elsee->pos, "if branches type mismatch.\n");
 			exit(0);
 		}
 	}
+	else {
+		if (actual_ty(then.ty)->kind != Ty_Void) {
+			EM_error(a->u.iff.then->pos, "No value should be returned.\n");
+			exit(0);
+		}
+	}
 	return then;
+}
+
+static struct expty handle_whileExp(S_table venv, S_table tenv, A_exp a)
+{
+	struct expty condition = { NULL };
+	struct expty doo = { NULL };
+	condition = transExp(venv, tenv, a->u.whilee.test);
+	if (actual_ty(condition.ty)->kind != Ty_int) {
+		EM_error(a->u.whilee.test->pos, "while confition must be integer type.\n");
+		exit(0);
+	}
+	doo = transExp(venv, tenv, a->u.whilee.body);
+	if (actual_ty(doo.ty)->kind != Ty_void) {
+		EM_error(a->u.whilee.body->pos, "while loop cannot return value.\n");
+		exit(0);
+	}
+	return doo;
+}
+
+static struct expty handle_forExp(S_table venv, S_table tenv, A_exp a)
+{
+	struct expty low = { NULL };
+	struct expty high = { NULL };
+	struct expty body = { NULL };
+	low = transExp(venv, tenv, a->u.forr.lo);
+	high = transExp(venv, tenv, a->u.forr.hi);
+	if (actual_ty(low.ty)->kind != Ty_int) {
+		EM_error(a->u.forr.lo->pos, "for loop low range must be integer type.\n");
+		exit(0);
+	}
+	if (actual_ty(high.ty)->kind != Ty_int) {
+		EM_error(a->u.forr.hi->pos, "for loop high range must be integer type.\n");
+		exit(0);
+	}
+	S_beginScope(venv);
+	S_enter(venv, a->u.forr.var, E_VarEntry(Ty_Int()));
+	infor = 1;
+	for_idx = a->u.forr.var;
+	body = transExp(venv, tenv, a->u.forr.body);
+	infor = 0;
+	if (actual_ty(body.ty)->kind != Ty_void) {
+		EM_error(a->u.forr.body->pos, "for loop cannot return value.\n");
+		exit(0);
+	}
+	S_endScope(venv);
+	return body;
 }
 
 static struct expty handle_letExp(S_table venv, S_table tenv, A_exp a)
@@ -233,8 +297,8 @@ static struct expty transExp(S_table venv, S_table tenv, A_exp a) {
 		case A_seqExp: return handle_seqExp(venv, tenv, a);
 		case A_assignExp: return handle_assignExp(venv, tenv, a);
 		case A_ifExp: return handle_ifExp(venv, tenv, a);
-		case A_whileExp:
-		case A_forExp:
+		case A_whileExp: return handle_whileExp(venv, tenv, a);
+		case A_forExp: return handle_forExp(venv, tenv, a);
 		case A_breakExp: assert(0); break;
 		case A_letExp: return handle_letExp(venv, tenv, a);
 		case A_arrayExp: return handle_arrayExp(venv, tenv, a);
@@ -297,15 +361,16 @@ static void transVarDec(S_table venv, S_table tenv, A_dec d)
 {
 	if (rescan) return;
 	Ty_ty x = S_look(tenv, d->u.var.typ);
-	if (!x) {
+	if (S_name(d->u.var.typ) != "NULL" && !x) {
 		EM_error(d->pos, "undefined type \"%s\".\n", S_name(d->u.var.typ));
 		exit(0);
 	}
 	struct expty e = transExp(venv, tenv, d->u.var.init);
-	if (actual_ty(x)->kind != actual_ty(e.ty)->kind ||
+	if (S_name(d->u.var.typ) != "NULL" && (
+		actual_ty(x)->kind != actual_ty(e.ty)->kind ||
 		actual_ty(x)->kind == Ty_record &&
-		d->u.var.typ != d->u.var.init->u.record.typ) {
-		EM_error(d->pos, "var declaration type mismatch.\n");
+		d->u.var.typ != d->u.var.init->u.record.typ)) {
+		EM_error(d->u.var.init->pos, "var declaration type mismatch.\n");
 		exit(0);
 	}
 	S_enter(venv, d->u.var.var, E_VarEntry(e.ty));
