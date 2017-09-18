@@ -57,7 +57,7 @@ void EM_error(int pos, char *message, ...)
 	vfprintf(stderr, message, ap);
 	va_end(ap);
 	fprintf(stderr, "\n");
-
+	panic();
 }
 
 void EM_reset(string fname)
@@ -69,3 +69,7 @@ void EM_reset(string fname)
 	if (!yyin) { EM_error(0, "cannot open"); exit(1); }
 }
 
+void panic()
+{
+	//exit(0);
+}
