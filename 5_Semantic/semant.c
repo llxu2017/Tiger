@@ -3,7 +3,7 @@
 #include "errormsg.h"
 #include "env.h"
 
-#define MAX_PARAM 256	// Maximum number of fields length
+#define MAX_PARAM 256	// Maximum number of fields length, function arguments.
 
 static int rescan = 0;
 static int infor = 0;
@@ -111,12 +111,17 @@ static struct expty handle_recordExp(S_table venv, S_table tenv, A_exp a)
 	struct expty exp = { NULL };
 	if (rescan) return exp;
 	Ty_ty x = S_look(tenv, a->u.record.typ); // TO DO: actual_ty?
-	if (!x)
+	exp.ty = x;
+	if (!x) {
 		EM_error(a->pos, "undefined record type \"%s\".", S_name(a->u.record.typ));
-	if (!x->u.record)
+		return exp;
+	}
+	if (!x->u.record) {
 		EM_error(a->pos, "a record type expected.");
-	Ty_fieldList f;
-	A_efieldList e;
+		return exp;
+	}
+	Ty_fieldList f = NULL;
+	A_efieldList e = NULL;
 	for (e = a->u.record.fields, f = x->u.record; e && f; e = e->tail, f = f->tail) {
 		if (e->head->name != f->head->name)
 			EM_error(a->pos, "record field name mismatch.");
@@ -331,9 +336,9 @@ static struct expty transFieldVar(S_table venv, S_table tenv, A_var v)
 static struct expty transVar(S_table venv, S_table tenv, A_var v)
 {
 	switch (v->kind) {
-		case A_simpleVar: transSimpleVar(venv, tenv, v); break;
-		case A_fieldVar: transFieldVar(venv, tenv, v); break;
-		case A_subscriptVar:transSubscriptVar(venv, tenv, v); break;
+		case A_simpleVar: return transSimpleVar(venv, tenv, v);
+		case A_fieldVar: return transFieldVar(venv, tenv, v);
+		case A_subscriptVar: return transSubscriptVar(venv, tenv, v);
 		default: assert(0);
 	}
 }
@@ -354,6 +359,8 @@ static void transTypeDec(S_table venv, S_table tenv, A_dec d)
 {
 	A_nametyList a;
 	for (a = d->u.type; a; a = a->tail) {
+		if (rescan && S_look(tenv, a->head->name))
+			EM_error(d->pos, "type alis already exists.");
 		S_enter(tenv, a->head->name, transTy(tenv, a->head->ty));
 		if (!rescan)
 			check_cyclic_ty(d->pos, a->head->name, S_look(tenv, a->head->name));
@@ -404,6 +411,8 @@ static void transFunctionDec(S_table venv, S_table tenv, A_dec d)
 		}
 		else
 			x = Ty_Void();
+		if (rescan && S_look(venv, f->head->name))
+			EM_error(d->pos, "function name already exits.");
 		S_enter(venv, 
 			    f->head->name, 
 			    E_FunEntry(makeFormals(tenv, f->head->params), x)

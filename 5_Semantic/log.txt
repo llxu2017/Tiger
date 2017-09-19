@@ -1,0 +1,98 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+D:\tiger\tiger\testcases\test9.tig:3.26: if branches type mismatch.
+10
+D:\tiger\tiger\testcases\test10.tig:1.1: while loop cannot return value.
+11
+D:\tiger\tiger\testcases\test11.tig:2.16: for loop high range must be integer type.
+D:\tiger\tiger\testcases\test11.tig:3.4: cannot modify for loop index.
+D:\tiger\tiger\testcases\test11.tig:1.1: for loop cannot return value.
+12
+13
+D:\tiger\tiger\testcases\test13.tig:3.1: can not compare different types.
+14
+D:\tiger\tiger\testcases\test14.tig:12.9: can not compare different types.
+15
+D:\tiger\tiger\testcases\test15.tig:3.12: no value should be returned.
+16
+D:\tiger\tiger\testcases\test16.tig:9.1: cyclic type declarations.
+D:\tiger\tiger\testcases\test16.tig:9.1: cyclic type declarations.
+D:\tiger\tiger\testcases\test16.tig:9.1: cyclic type declarations.
+D:\tiger\tiger\testcases\test16.tig:9.1: cyclic type declarations.
+17
+18
+19
+D:\tiger\tiger\testcases\test19.tig:8.17: undefined variable "a".
+20
+D:\tiger\tiger\testcases\test20.tig:3.19: undefined variable "i".
+21
+D:\tiger\tiger\testcases\test21.tig:8.24: integer required.
+D:\tiger\tiger\testcases\test21.tig:10.1: function return type mismatch.
+22
+D:\tiger\tiger\testcases\test22.tig:7.7: undefined field name "nam".
+23
+D:\tiger\tiger\testcases\test23.tig:7.16: assignment type mismatch.
+D:\tiger\tiger\testcases\test23.tig:9.1: assignment type mismatch.
+24
+D:\tiger\tiger\testcases\test24.tig:6.1: not an array.
+25
+D:\tiger\tiger\testcases\test25.tig:5.4: not a record.
+26
+D:\tiger\tiger\testcases\test26.tig:3.9: integer required.
+27
+28
+D:\tiger\tiger\testcases\test28.tig:7.51: var declaration type mismatch.
+29
+D:\tiger\tiger\testcases\test29.tig:7.41: var declaration type mismatch.
+30
+31
+D:\tiger\tiger\testcases\test31.tig:3.17: var declaration type mismatch.
+32
+D:\tiger\tiger\testcases\test32.tig:6.29: array initializer must be of the same type as array.
+33
+D:\tiger\tiger\testcases\test33.tig:3.19: undefined record type "rectype".
+34
+D:\tiger\tiger\testcases\test34.tig:5.16: function arguments type mismatch.
+35
+D:\tiger\tiger\testcases\test35.tig:5.9: function arguments type mismatch.
+D:\tiger\tiger\testcases\test35.tig:5.9: number of function arguments do not match.
+36
+D:\tiger\tiger\testcases\test36.tig:5.13: number of function arguments do not match.
+37
+38
+D:\tiger\tiger\testcases\test38.tig:5.1: type alis already exists.
+39
+D:\tiger\tiger\testcases\test39.tig:5.1: function name already exits.
+40
+D:\tiger\tiger\testcases\test40.tig:4.1: function return type mismatch.
+41
+D:\tiger\tiger\testcases\test41.tig:7.2: type alis already exists.
+42
+D:\tiger\tiger\testcases\test42.tig:20.13: assignment type mismatch.
+D:\tiger\tiger\testcases\test42.tig:21.13: assignment type mismatch.
+D:\tiger\tiger\testcases\test42.tig:22.9: not a record.
+D:\tiger\tiger\testcases\test42.tig:23.9: not a record.
+D:\tiger\tiger\testcases\test42.tig:24.18: assignment type mismatch.
+D:\tiger\tiger\testcases\test42.tig:27.22: assignment type mismatch.
+D:\tiger\tiger\testcases\test42.tig:30.1: assignment type mismatch.
+43
+D:\tiger\tiger\testcases\test43.tig:6.4: integer required.
+44
+D:\tiger\tiger\testcases\test44.tig:5.19: var declaration type mismatch.
+45
+46
+D:\tiger\tiger\testcases\test46.tig:4.19: var declaration type mismatch.
+47
+D:\tiger\tiger\testcases\test47.tig:6.1: type alis already exists.
+48
+D:\tiger\tiger\testcases\test48.tig:6.1: function name already exits.
+49
+D:\tiger\tiger\testcases\test49.tig:5.18: syntax error
+Press any key to continue . . .
