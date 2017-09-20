@@ -68,6 +68,10 @@ static struct expty handle_callExp(S_table venv, S_table tenv, A_exp a)
 		EM_error(a->pos, "function \"%s\" not defined.", S_name(a->u.call.func));
 		return exp;
 	}
+	if (x->kind != E_funEntry) {
+		EM_error(a->pos, "variable not bound to a function.");
+		return exp;
+	}
 	Ty_tyList t = NULL;
 	for (e = a->u.call.args, t = x->u.fun.formals; e && t; e = e->tail, t = t->tail) {
 		exp = transExp(venv, tenv, e->head);
