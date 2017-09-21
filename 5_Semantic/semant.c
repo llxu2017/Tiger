@@ -142,7 +142,7 @@ static struct expty handle_recordExp(S_table venv, S_table tenv, A_exp a)
 			EM_error(a->pos, "nil can only be assigned to record type.");
 	}
 	if (f || e)
-		EM_error(a->pos, "record length mismatch.\n");
+		EM_error(a->pos, "record length mismatch.");
 	return exp;
 }
 
@@ -238,12 +238,12 @@ static struct expty handle_letExp(S_table venv, S_table tenv, A_exp a)
 	A_decList d;
 	S_beginScope(venv);
 	S_beginScope(tenv);
-	rescan = 1;
-	for (d = a->u.let.decs; d; d = d->tail)
+	for (d = a->u.let.decs; d; d = d->tail) {
+		rescan = 1;
 		transDec(venv, tenv, d->head);
-	rescan = 0;
-	for (d = a->u.let.decs; d; d = d->tail)
+		rescan = 0;
 		transDec(venv, tenv, d->head);
+	}
 	A_expList e;
 	for(e = a->u.let.body; e; e = e->tail)
 	    exp = transExp(venv, tenv, e->head);
@@ -371,7 +371,7 @@ static void transTypeDec(S_table venv, S_table tenv, A_dec d)
 		if (rescan && S_look(tmpenv, a->head->name))
 			EM_error(d->pos, "type alias already exists in this declaration batch.");
 		S_enter(tenv, a->head->name, transTy(tenv, a->head->ty));
-		S_enter(tmpenv, a->head->name, transTy(tenv, a->head->ty));
+		S_enter(tmpenv, a->head->name, S_look(tenv, a->head->name));
 		if (!rescan)
 			check_cyclic_ty(d->pos, a->head->name, S_look(tenv, a->head->name));
 	}
@@ -428,7 +428,7 @@ static void transFunctionDec(S_table venv, S_table tenv, A_dec d)
 		);
 		S_enter(tmpenv,
 			f->head->name,
-			E_FunEntry(makeFormals(tenv, f->head->params), x)
+			S_look(venv, f->head->name)
 		);
 		S_beginScope(venv);
 		transFormalDec(venv, tenv, f->head->params);
@@ -467,7 +467,7 @@ static Ty_ty transRecordTy(S_table tenv, A_ty a)
 	int i = 0, j;
 	for (f = a->u.record; f; f = f->tail) {
 		x = S_look(tenv, f->head->typ);
-		if (!rescan && !x) EM_error(a->pos, "undefined type \"%s\".\n", S_name(f->head->typ));
+		if (!rescan && !x) EM_error(a->pos, "undefined type \"%s\".", S_name(f->head->typ));
 		stkx[i] = x;
 		stk[i++] = f;
 	}
