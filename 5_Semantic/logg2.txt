@@ -63,6 +63,7 @@ D:\tiger\Testcases\Bad\28.tig:7.52: var declaration type mismatch.
 29
 D:\tiger\Testcases\Bad\29.tig:7.42: var declaration type mismatch.
 30
+D:\tiger\Testcases\Bad\30.tig:2.11: break can only be used in while or for loops.
 31
 D:\tiger\Testcases\Bad\31.tig:6.4: integer required.
 32
@@ -70,7 +71,6 @@ D:\tiger\Testcases\Bad\32.tig:1.1: undefined variable "true".
 33
 D:\tiger\Testcases\Bad\33.tig:5.15: record field type mismatch.
 34
+D:\tiger\Testcases\Bad\34.tig:5.17: break can only be used in while or for loops.
 D:\tiger\Testcases\Bad\34.tig:6.2: function return type mismatch.
-35
-D:\tiger\Testcases\Bad\35.tig:cannot open
 Press any key to continue . . .

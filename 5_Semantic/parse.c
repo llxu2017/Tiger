@@ -33,7 +33,8 @@ int main()
 		printf("%d\n", i);
 		fprintf(fp, "%d:\n", i);
 		//snprintf(buf, 100, "%s%d%s", "D:\\tiger\\tiger\\testcases\\test", i, ".tig");
-		snprintf(buf, 100, "%s%d%s", "D:\\tiger\\Testcases\\Bad\\", i, ".tig");
+		//snprintf(buf, 100, "%s%d%s", "D:\\tiger\\Testcases\\Bad\\", i, ".tig");
+		snprintf(buf, 100, "%s%d%s", "D:\\tiger\\Testcases\\Good\\", i, ".tig");
 		absyn_root = parse(buf);
 		if (absyn_root) {
 			pr_exp(fp, absyn_root, 0);

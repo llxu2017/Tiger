@@ -5,8 +5,8 @@
 
 #define MAX_PARAM 256	// Maximum number of fields length, function arguments.
 
-static int rescan = 0; // rescan for forward declaration
 static int infor = 0;
+static int loop_depth = 0;
 S_symbol for_idx;
 
 struct expty expTy(Tr_exp exp, Ty_ty ty)
@@ -63,7 +63,6 @@ static struct expty handle_stringExp(S_table venv, S_table tenv, A_exp a)
 static struct expty handle_callExp(S_table venv, S_table tenv, A_exp a)
 {
 	struct expty exp = { NULL, NULL };
-	if (rescan) return exp;
 	A_expList e = NULL;
 	E_enventry x = S_look(venv, a->u.call.func);
 	if (!x) {
@@ -119,7 +118,6 @@ static struct expty handle_opExp(S_table venv, S_table tenv, A_exp a)
 static struct expty handle_recordExp(S_table venv, S_table tenv, A_exp a)
 {
 	struct expty exp = { NULL };
-	if (rescan) return exp;
 	Ty_ty x = S_look(tenv, a->u.record.typ);
 	if (x) x = actual_ty(tenv, x);
 	exp.ty = x;
@@ -205,7 +203,9 @@ static struct expty handle_whileExp(S_table venv, S_table tenv, A_exp a)
 	condition = transExp(venv, tenv, a->u.whilee.test);
 	if (!validate_ty(tenv, condition.ty, Ty_Int()))
 		EM_error(a->u.whilee.test->pos, "while test must be integer type.");
+	++loop_depth;
 	doo = transExp(venv, tenv, a->u.whilee.body);
+	--loop_depth;
 	if (!validate_ty(tenv, doo.ty, Ty_Void()))
 		EM_error(a->u.whilee.body->pos, "while loop cannot return value.");
 	return doo;
@@ -226,12 +226,22 @@ static struct expty handle_forExp(S_table venv, S_table tenv, A_exp a)
 	S_enter(venv, a->u.forr.var, E_VarEntry(Ty_Int()));
 	infor = 1;
 	for_idx = a->u.forr.var;
+	++loop_depth;
 	body = transExp(venv, tenv, a->u.forr.body);
+	--loop_depth;
 	infor = 0;
 	if (!validate_ty(tenv, body.ty, Ty_Void()))
 		EM_error(a->u.forr.body->pos, "for loop cannot return value.");
 	S_endScope(venv);
 	return body;
+}
+
+static struct expty handle_breakExp(S_table venv, S_table tenv, A_exp a)
+{
+	assert(loop_depth >= 0);
+	if(!loop_depth)
+		EM_error(a->pos, "break can only be used in while or for loops.");
+	return (struct expty) { NULL, Ty_Void() };
 }
 
 static struct expty handle_letExp(S_table venv, S_table tenv, A_exp a)
@@ -240,12 +250,8 @@ static struct expty handle_letExp(S_table venv, S_table tenv, A_exp a)
 	A_decList d;
 	S_beginScope(venv);
 	S_beginScope(tenv);
-	for (d = a->u.let.decs; d; d = d->tail) {
-		rescan = 1;
+	for (d = a->u.let.decs; d; d = d->tail)
 		transDec(venv, tenv, d->head);
-		rescan = 0;
-		transDec(venv, tenv, d->head);
-	}
 	A_expList e;
 	for (e = a->u.let.body; e; e = e->tail)
 		exp = transExp(venv, tenv, e->head);
@@ -257,7 +263,6 @@ static struct expty handle_letExp(S_table venv, S_table tenv, A_exp a)
 static struct expty handle_arrayExp(S_table venv, S_table tenv, A_exp a)
 {
 	struct expty exp = { NULL };
-	if (rescan) return exp;
 	Ty_ty x = S_look(tenv, a->u.array.typ);
 	if (!x)
 		EM_error(a->pos, "undefined type \"%s\".", S_name(a->u.array.typ));
@@ -287,7 +292,7 @@ static struct expty transExp(S_table venv, S_table tenv, A_exp a) {
 	case A_ifExp: return handle_ifExp(venv, tenv, a);
 	case A_whileExp: return handle_whileExp(venv, tenv, a);
 	case A_forExp: return handle_forExp(venv, tenv, a);
-	case A_breakExp: return (struct expty) { NULL, Ty_Void() };
+	case A_breakExp: return handle_breakExp(venv, tenv, a);
 	case A_letExp: return handle_letExp(venv, tenv, a);
 	case A_arrayExp: return handle_arrayExp(venv, tenv, a);
 	default: assert(0);
@@ -297,7 +302,7 @@ static struct expty transExp(S_table venv, S_table tenv, A_exp a) {
 static struct expty transSimpleVar(S_table venv, S_table tenv, A_var v)
 {
 	E_enventry x = S_look(venv, v->u.simple);
-	if (!rescan && !x)
+	if (!x)
 		EM_error(v->pos, "undefined variable \"%s\".", S_name(v->u.simple));
 	if (x && x->kind == E_varEntry)
 		return expTy(NULL, actual_ty(tenv, x->u.var.ty));
@@ -354,7 +359,6 @@ static struct expty transVar(S_table venv, S_table tenv, A_var v)
 
 static void transVarDec(S_table venv, S_table tenv, A_dec d)
 {
-	if (rescan) return;
 	Ty_ty x = S_look(tenv, d->u.var.typ);
 	if (S_name(d->u.var.typ) != "NULL" && !x)
 		EM_error(d->pos, "undefined type \"%s\".", S_name(d->u.var.typ));
@@ -372,13 +376,13 @@ static void transTypeDec(S_table venv, S_table tenv, A_dec d)
 	for (a = d->u.type; a; a = a->tail)
 		S_enter(tenv, a->head->name, Ty_Name(a->head->name, NULL));
 	for (a = d->u.type; a; a = a->tail) {
-		if (rescan && S_look(tmpenv, a->head->name))
+		if (S_look(tmpenv, a->head->name))
 			EM_error(d->pos, "type alias already exists in this declaration batch.");
 		S_enter(tenv, a->head->name, transTy(tenv, a->head->ty));
 		S_enter(tmpenv, a->head->name, S_look(tenv, a->head->name));
-		if (!rescan)
-			check_cyclic_ty(d->pos, a->head->name, S_look(tenv, a->head->name));
 	}
+	for (a = d->u.type; a; a = a->tail)
+		check_cyclic_ty(d->pos, a->head->name, S_look(tenv, a->head->name));
 }
 
 static Ty_tyList makeFormals(S_table tenv, A_fieldList p)
@@ -390,7 +394,7 @@ static Ty_tyList makeFormals(S_table tenv, A_fieldList p)
 	int i = 0, j;
 	for (f = p; f; f = f->tail) {
 		x = S_look(tenv, f->head->typ);
-		if (!rescan && !x) EM_error(f->head->pos, "undefined type \"%s\" in function parameters.", S_name(f->head->typ));
+		if (!x) EM_error(f->head->pos, "undefined type \"%s\" in function parameters.", S_name(f->head->typ));
 		stkx[i] = x;
 		stk[i++] = f;
 	}
@@ -424,7 +428,21 @@ static void transFunctionDec(S_table venv, S_table tenv, A_dec d)
 		}
 		else
 			x = Ty_Void();
-		if (rescan && S_look(tmpenv, f->head->name))
+		S_enter(venv,
+			f->head->name,
+			E_FunEntry(makeFormals(tenv, f->head->params), x)
+		);
+	}
+	for (f = d->u.function; f; f = f->tail) {
+		Ty_ty x = NULL;
+		if (S_name(f->head->result) != "NULL") {
+			x = S_look(tenv, f->head->result);
+			if (!x)
+				EM_error(f->head->pos, "undefined function return type \"%s\".", S_name(f->head->result));
+		}
+		else
+			x = Ty_Void();
+		if (S_look(tmpenv, f->head->name))
 			EM_error(d->pos, "function name already exits.");
 		S_enter(venv,
 			f->head->name,
@@ -436,11 +454,9 @@ static void transFunctionDec(S_table venv, S_table tenv, A_dec d)
 		);
 		S_beginScope(venv);
 		transFormalDec(venv, tenv, f->head->params);
-		if (!rescan) {
-			exp = transExp(venv, tenv, f->head->body);
-			if (!validate_ty(tenv, exp.ty, x))
-				EM_error(f->head->body->pos, "function return type mismatch.");
-		}
+		exp = transExp(venv, tenv, f->head->body);
+		if (!validate_ty(tenv, exp.ty, x))
+			EM_error(f->head->body->pos, "function return type mismatch.");
 		S_endScope(venv);
 	}
 }
@@ -458,7 +474,7 @@ static void transDec(S_table venv, S_table tenv, A_dec d)
 static Ty_ty transNameTy(S_table tenv, A_ty a)
 {
 	Ty_ty x = S_look(tenv, a->u.name);
-	if (!rescan && !x)
+	if (!x)
 		EM_error(a->pos, "undefined type \"%s\".", S_name(a->u.name));
 	return Ty_Name(a->u.name, x);
 }
@@ -471,7 +487,7 @@ static Ty_ty transRecordTy(S_table tenv, A_ty a)
 	int i = 0, j;
 	for (f = a->u.record; f; f = f->tail) {
 		x = S_look(tenv, f->head->typ);
-		if (!rescan && !x) EM_error(a->pos, "undefined type \"%s\".", S_name(f->head->typ));
+		if (!x) EM_error(a->pos, "undefined type \"%s\".", S_name(f->head->typ));
 		stkx[i] = x;
 		stk[i++] = f;
 	}
@@ -483,7 +499,7 @@ static Ty_ty transRecordTy(S_table tenv, A_ty a)
 static Ty_ty transArrayTy(S_table tenv, A_ty a)
 {
 	Ty_ty x = S_look(tenv, a->u.array);
-	if (!rescan && !x)
+	if (!x)
 		EM_error(a->pos, "undefined type \"%s\".", S_name(a->u.array));
 	return Ty_Array(x);
 }

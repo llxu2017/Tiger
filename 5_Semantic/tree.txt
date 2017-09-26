@@ -1,67 +1,47 @@
 1:
- iffExp(
-  varExp(
-   simpleVar(true)),
-  intExp(5),
-  stringExp(hello))
-2:
- iffExp(
-  varExp(
-   simpleVar(false)),
-  intExp(1),
-  intExp(9))
-3:
- opExp(
-  PLUS,
-  intExp(3),
-  stringExp(four))
-4:
- opExp(
-  NOTEQUAL,
-  intExp(800),
-  varExp(
-   simpleVar(true)))
-5:
  letExp(
   decList(
-   varDec(a,
-    int,
-    intExp(7),
-    TRUE),
+   typeDec(
+    nametyList(
+     namety(arrtype,
+      arrayTy(int)),
+     nametyList())),
    decList(
-    varDec(b,
-     string,
-     stringExp(blah),
+    varDec(arr1,
+     arrtype,
+     arrayExp(arrtype,
+      intExp(10),
+      intExp(0)),
      TRUE),
     decList())),
   expList(
-   assignExp(
-    simpleVar(a),
-    varExp(
-     simpleVar(b))),
+   varExp(
+    simpleVar(arr1)),
    expList()))
-6:
+2:
  letExp(
   decList(
-   functionDec(
-    fundecList(
-     fundec(barf,
-      fieldList(
-       field(x,
-        int,
-        TRUE),
-       fieldList()),
-      int,
+   typeDec(
+    nametyList(
+     namety(myint,
+      nameTy(int)),
+     nametyList(
+      namety(arrtype,
+       arrayTy(myint)),
+      nametyList()))),
+   decList(
+    varDec(arr1,
+     arrtype,
+     arrayExp(arrtype,
+      intExp(10),
       intExp(0)),
-     fundecList())),
-   decList()),
+     TRUE),
+    decList())),
   expList(
-   callExp(barf,
-    expList(
-     stringExp(zoinks!),
-     expList())),
+   varExp(
+    simpleVar(arr1)),
    expList()))
-7:
+3:
  letExp(
   decList(
    typeDec(
@@ -73,21 +53,21 @@
          string,
          TRUE),
         fieldList(
-         field(id,
+         field(age,
           int,
           TRUE),
          fieldList())))),
      nametyList())),
    decList(
     varDec(rec1,
-     NULL,
+     rectype,
      recordExp(rectype,
       efieldList(
        efield(name,
-        stringExp(aname)),
+        stringExp(Nobody)),
        efieldList(
-        efield(id,
-         intExp(0)),
+        efield(age,
+         intExp(1000)),
         efieldList()))),
      TRUE),
     decList())),
@@ -96,37 +76,228 @@
     fieldVar(
      simpleVar(rec1),
      name),
-    intExp(3)),
+    stringExp(Somebody)),
+   expList(
+    varExp(
+     simpleVar(rec1)),
+    expList())))
+4:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(nfactor,
+      fieldList(
+       field(n,
+        int,
+        TRUE),
+       fieldList()),
+      int,
+      iffExp(
+       opExp(
+        EQUAL,
+        varExp(
+         simpleVar(n)),
+        intExp(0)),
+       intExp(1),
+       opExp(
+        TIMES,
+        varExp(
+         simpleVar(n)),
+        callExp(nfactor,
+         expList(
+          opExp(
+           MINUS,
+           varExp(
+            simpleVar(n)),
+           intExp(1)),
+          expList()))))),
+     fundecList())),
+   decList()),
+  expList(
+   callExp(nfactor,
+    expList(
+     intExp(10),
+     expList())),
+   expList()))
+5:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(intlist,
+      recordTy(
+       fieldList(
+        field(hd,
+         int,
+         TRUE),
+        fieldList(
+         field(tl,
+          intlist,
+          TRUE),
+         fieldList())))),
+     nametyList(
+      namety(tree,
+       recordTy(
+        fieldList(
+         field(key,
+          int,
+          TRUE),
+         fieldList(
+          field(children,
+           treelist,
+           TRUE),
+          fieldList())))),
+      nametyList(
+       namety(treelist,
+        recordTy(
+         fieldList(
+          field(hd,
+           tree,
+           TRUE),
+          fieldList(
+           field(tl,
+            treelist,
+            TRUE),
+           fieldList())))),
+       nametyList())))),
+   decList(
+    varDec(lis,
+     intlist,
+     recordExp(intlist,
+      efieldList(
+       efield(hd,
+        intExp(0)),
+       efieldList(
+        efield(tl,
+         nilExp()),
+        efieldList()))),
+     TRUE),
+    decList())),
+  expList(
+   varExp(
+    simpleVar(lis)),
+   expList()))
+6:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(do_nothing1,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList(
+        field(b,
+         string,
+         TRUE),
+        fieldList())),
+      NULL,
+      callExp(do_nothing2,
+       expList(
+        opExp(
+         PLUS,
+         varExp(
+          simpleVar(a)),
+         intExp(1)),
+        expList()))),
+     fundecList(
+      fundec(do_nothing2,
+       fieldList(
+        field(d,
+         int,
+         TRUE),
+        fieldList()),
+       NULL,
+       callExp(do_nothing1,
+        expList(
+         varExp(
+          simpleVar(d)),
+         expList(
+          stringExp(str),
+          expList())))),
+      fundecList()))),
+   decList()),
+  expList(
+   callExp(do_nothing1,
+    expList(
+     intExp(0),
+     expList(
+      stringExp(str2),
+      expList()))),
+   expList()))
+7:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(do_nothing1,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList(
+        field(b,
+         string,
+         TRUE),
+        fieldList())),
+      int,
+      seqExp(
+       expList(
+        callExp(do_nothing2,
+         expList(
+          opExp(
+           PLUS,
+           varExp(
+            simpleVar(a)),
+           intExp(1)),
+          expList())),
+        expList(
+         intExp(0),
+         expList())))),
+     fundecList(
+      fundec(do_nothing2,
+       fieldList(
+        field(d,
+         int,
+         TRUE),
+        fieldList()),
+       string,
+       seqExp(
+        expList(
+         callExp(do_nothing1,
+          expList(
+           varExp(
+            simpleVar(d)),
+           expList(
+            stringExp(str),
+            expList()))),
+         expList(
+          stringExp( ),
+          expList())))),
+      fundecList()))),
+   decList()),
+  expList(
+   callExp(do_nothing1,
+    expList(
+     intExp(0),
+     expList(
+      stringExp(str2),
+      expList()))),
    expList()))
 8:
- letExp(
-  decList(
-   varDec(d,
-    NULL,
-    intExp(0),
-    TRUE),
-   decList()),
-  expList(
-   varExp(
-    subscriptVar(
-     simpleVar(d),
-     intExp(3))),
-   expList()))
+ iffExp(
+  seqExp(
+   expList(
+    opExp(
+     GREAT,
+     intExp(10),
+     intExp(20)),
+    expList())),
+  intExp(30),
+  intExp(40))
 9:
- letExp(
-  decList(
-   varDec(d,
-    NULL,
-    intExp(0),
-    TRUE),
-   decList()),
-  expList(
-   varExp(
-    fieldVar(
-     simpleVar(d),
-     f)),
-   expList()))
-10:
  iffExp(
   seqExp(
    expList(
@@ -137,43 +308,141 @@
     expList())),
   intExp(13),
   stringExp( ))
+10:
+ whileExp(
+  seqExp(
+   expList(
+    opExp(
+     GREAT,
+     intExp(10),
+     intExp(5)),
+    expList())),
+  opExp(
+   PLUS,
+   intExp(5),
+   intExp(6)))
+
 11:
  forExp(i,
   intExp(10),
   stringExp( ),
-  callExp(print,
-   expList(
-    stringExp(/n),
-    expList())),
-  TRUE)
-12:
- forExp(i,
-  intExp(1),
-  intExp(10),
   assignExp(
    simpleVar(i),
    opExp(
-    PLUS,
+    MINUS,
     varExp(
      simpleVar(i)),
     intExp(1))),
   TRUE)
-13:
+12:
  letExp(
   decList(
-   functionDec(
-    fundecList(
-     fundec(p,
-      fieldList(),
-      NULL,
-      intExp(5)),
-     fundecList())),
+   varDec(a,
+    NULL,
+    intExp(0),
+    TRUE),
    decList()),
   expList(
-   callExp(p,
-    expList()),
+   forExp(i,
+    intExp(0),
+    intExp(100),
+    seqExp(
+     expList(
+      assignExp(
+       simpleVar(a),
+       opExp(
+        PLUS,
+        varExp(
+         simpleVar(a)),
+        intExp(1))),
+      expList(
+       seqExp(
+        expList()),
+       expList()))),
+    TRUE),
    expList()))
+13:
+ opExp(
+  GREAT,
+  intExp(3),
+  stringExp(df))
 14:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(arrtype,
+      arrayTy(int)),
+     nametyList(
+      namety(rectype,
+       recordTy(
+        fieldList(
+         field(name,
+          string,
+          TRUE),
+         fieldList(
+          field(id,
+           int,
+           TRUE),
+          fieldList())))),
+      nametyList()))),
+   decList(
+    varDec(rec,
+     NULL,
+     recordExp(rectype,
+      efieldList(
+       efield(name,
+        stringExp(aname)),
+       efieldList(
+        efield(id,
+         intExp(0)),
+        efieldList()))),
+     TRUE),
+    decList(
+     varDec(arr,
+      NULL,
+      arrayExp(arrtype,
+       intExp(3),
+       intExp(0)),
+      TRUE),
+     decList()))),
+  expList(
+   iffExp(
+    opExp(
+     NOTEQUAL,
+     varExp(
+      simpleVar(rec)),
+     varExp(
+      simpleVar(arr))),
+    intExp(3),
+    intExp(4)),
+   expList()))
+15:
+ iffExp(
+  intExp(20),
+  intExp(3))
+16:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(a,
+      nameTy(c)),
+     nametyList(
+      namety(b,
+       nameTy(a)),
+      nametyList(
+       namety(c,
+        nameTy(d)),
+       nametyList(
+        namety(d,
+         nameTy(a)),
+        nametyList()))))),
+   decList()),
+  expList(
+   stringExp(),
+   expList()))
+17:
  letExp(
   decList(
    typeDec(
@@ -215,127 +484,12 @@
    varExp(
     simpleVar(d)),
    expList()))
-15:
- letExp(
-  decList(
-   typeDec(
-    nametyList(
-     namety(a,
-      arrayTy(int)),
-     nametyList(
-      namety(b,
-       arrayTy(int)),
-      nametyList()))),
-   decList(
-    varDec(x,
-     NULL,
-     arrayExp(a,
-      intExp(5),
-      intExp(0)),
-     TRUE),
-    decList(
-     varDec(y,
-      NULL,
-      arrayExp(b,
-       intExp(5),
-       intExp(0)),
-      TRUE),
-     decList()))),
-  expList(
-   assignExp(
-    simpleVar(x),
-    varExp(
-     simpleVar(y))),
-   expList()))
-16:
- letExp(
-  decList(
-   typeDec(
-    nametyList(
-     namety(a,
-      recordTy(
-       fieldList(
-        field(first,
-         int,
-         TRUE),
-        fieldList()))),
-     nametyList(
-      namety(b,
-       recordTy(
-        fieldList(
-         field(first,
-          int,
-          TRUE),
-         fieldList()))),
-      nametyList()))),
-   decList(
-    varDec(x,
-     NULL,
-     recordExp(a,
-      efieldList(
-       efield(first,
-        intExp(6)),
-       efieldList())),
-     TRUE),
-    decList(
-     varDec(y,
-      NULL,
-      recordExp(b,
-       efieldList(
-        efield(first,
-         intExp(6)),
-        efieldList())),
-      TRUE),
-     decList()))),
-  expList(
-   assignExp(
-    simpleVar(x),
-    varExp(
-     simpleVar(y))),
-   expList()))
-17:
- letExp(
-  decList(
-   typeDec(
-    nametyList(
-     namety(rectype,
-      recordTy(
-       fieldList(
-        field(name,
-         string,
-         TRUE),
-        fieldList(
-         field(id,
-          int,
-          TRUE),
-         fieldList())))),
-     nametyList())),
-   decList(
-    varDec(rec1,
-     NULL,
-     recordExp(rectype,
-      efieldList(
-       efield(name,
-        stringExp(Name)),
-       efieldList(
-        efield(id,
-         intExp(0)),
-        efieldList()))),
-     TRUE),
-    decList())),
-  expList(
-   assignExp(
-    fieldVar(
-     simpleVar(rec1),
-     blarg),
-    stringExp(asd)),
-   expList()))
 18:
  letExp(
   decList(
    functionDec(
     fundecList(
-     fundec(g,
+     fundec(do_nothing1,
       fieldList(
        field(a,
         int,
@@ -346,22 +500,63 @@
          TRUE),
         fieldList())),
       int,
-      varExp(
-       simpleVar(a))),
+      seqExp(
+       expList(
+        callExp(do_nothing2,
+         expList(
+          opExp(
+           PLUS,
+           varExp(
+            simpleVar(a)),
+           intExp(1)),
+          expList())),
+        expList(
+         intExp(0),
+         expList())))),
      fundecList())),
-   decList()),
+   decList(
+    varDec(d,
+     NULL,
+     intExp(0),
+     TRUE),
+    decList(
+     functionDec(
+      fundecList(
+       fundec(do_nothing2,
+        fieldList(
+         field(d,
+          int,
+          TRUE),
+         fieldList()),
+        string,
+        seqExp(
+         expList(
+          callExp(do_nothing1,
+           expList(
+            varExp(
+             simpleVar(d)),
+            expList(
+             stringExp(str),
+             expList()))),
+          expList(
+           stringExp( ),
+           expList())))),
+       fundecList())),
+     decList()))),
   expList(
-   callExp(g,
+   callExp(do_nothing1,
     expList(
-     stringExp(one),
-     expList())),
+     intExp(0),
+     expList(
+      stringExp(str2),
+      expList()))),
    expList()))
 19:
  letExp(
   decList(
    functionDec(
     fundecList(
-     fundec(g,
+     fundec(do_nothing1,
       fieldList(
        field(a,
         int,
@@ -372,75 +567,68 @@
          TRUE),
         fieldList())),
       int,
-      varExp(
-       simpleVar(a))),
-     fundecList())),
+      seqExp(
+       expList(
+        callExp(do_nothing2,
+         expList(
+          opExp(
+           PLUS,
+           varExp(
+            simpleVar(a)),
+           intExp(1)),
+          expList())),
+        expList(
+         intExp(0),
+         expList())))),
+     fundecList(
+      fundec(do_nothing2,
+       fieldList(
+        field(d,
+         int,
+         TRUE),
+        fieldList()),
+       string,
+       seqExp(
+        expList(
+         callExp(do_nothing1,
+          expList(
+           varExp(
+            simpleVar(a)),
+           expList(
+            stringExp(str),
+            expList()))),
+         expList(
+          stringExp( ),
+          expList())))),
+      fundecList()))),
    decList()),
   expList(
-   callExp(g,
+   callExp(do_nothing1,
     expList(
-     intExp(3),
+     intExp(0),
      expList(
-      stringExp(one),
-      expList(
-       intExp(5),
-       expList())))),
+      stringExp(str2),
+      expList()))),
    expList()))
 20:
- letExp(
-  decList(
-   varDec(a,
-    NULL,
-    nilExp(),
-    TRUE),
-   decList()),
-  expList(
-   varExp(
-    simpleVar(a)),
-   expList()))
-21:
- letExp(
-  decList(
-   functionDec(
-    fundecList(
-     fundec(g,
-      fieldList(
-       field(x,
-        int,
-        TRUE),
-       fieldList()),
-      int,
-      varExp(
-       simpleVar(x))),
-     fundecList())),
-   decList(
-    varDec(g,
-     NULL,
-     intExp(3),
-     TRUE),
-    decList())),
-  expList(
-   callExp(g,
-    expList(
-     intExp(4),
-     expList())),
-   expList()))
-22:
- opExp(
-  EQUAL,
-  nilExp(),
-  nilExp())
-23:
- forExp(i,
-  intExp(10),
-  stringExp( ),
-  callExp(print,
+ whileExp(
+  opExp(
+   GREAT,
+   intExp(10),
+   intExp(5)),
+  seqExp(
    expList(
-    stringExp(Tiger
-),
-    expList())),
-  TRUE)
-24:
+    opExp(
+     PLUS,
+     varExp(
+      simpleVar(i)),
+     intExp(1)),
+    expList(
+     seqExp(
+      expList()),
+     expList()))))
+
+21:
  letExp(
   decList(
    functionDec(
@@ -479,7 +667,7 @@
      intExp(10),
      expList())),
    expList()))
-25:
+22:
  letExp(
   decList(
    typeDec(
@@ -516,7 +704,7 @@
      nam),
     stringExp(asd)),
    expList()))
-26:
+23:
  letExp(
   decList(
    typeDec(
@@ -559,11 +747,66 @@
       id),
      stringExp()),
     expList())))
-27:
+24:
+ letExp(
+  decList(
+   varDec(d,
+    NULL,
+    intExp(0),
+    TRUE),
+   decList()),
+  expList(
+   varExp(
+    subscriptVar(
+     simpleVar(d),
+     intExp(3))),
+   expList()))
+25:
+ letExp(
+  decList(
+   varDec(d,
+    NULL,
+    intExp(0),
+    TRUE),
+   decList()),
+  expList(
+   varExp(
+    fieldVar(
+     simpleVar(d),
+     f)),
+   expList()))
+26:
  opExp(
   PLUS,
   intExp(3),
   stringExp(var))
+27:
+ letExp(
+  decList(
+   varDec(a,
+    NULL,
+    intExp(0),
+    TRUE),
+   decList(
+    functionDec(
+     fundecList(
+      fundec(g,
+       fieldList(
+        field(a,
+         int,
+         TRUE),
+        fieldList()),
+       int,
+       varExp(
+        simpleVar(a))),
+      fundecList())),
+    decList())),
+  expList(
+   callExp(g,
+    expList(
+     intExp(2),
+     expList())),
+   expList()))
 28:
  letExp(
   decList(
@@ -634,10 +877,432 @@
     simpleVar(arr1)),
    expList()))
 30:
- iffExp(
-  intExp(1),
-  breakExp())
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(a,
+      arrayTy(int)),
+     nametyList(
+      namety(b,
+       nameTy(a)),
+      nametyList()))),
+   decList(
+    varDec(arr1,
+     a,
+     arrayExp(b,
+      intExp(10),
+      intExp(0)),
+     TRUE),
+    decList())),
+  expList(
+   varExp(
+    subscriptVar(
+     simpleVar(arr1),
+     intExp(2))),
+   expList()))
 31:
+ letExp(
+  decList(
+   varDec(a,
+    int,
+    stringExp( ),
+    TRUE),
+   decList()),
+  expList(
+   varExp(
+    simpleVar(a)),
+   expList()))
+32:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(arrayty,
+      arrayTy(int)),
+     nametyList())),
+   decList(
+    varDec(a,
+     NULL,
+     arrayExp(arrayty,
+      intExp(10),
+      stringExp( )),
+     TRUE),
+    decList())),
+  expList(
+   intExp(0),
+   expList()))
+33:
+ letExp(
+  decList(
+   varDec(a,
+    NULL,
+    recordExp(rectype,
+     efieldList()),
+    TRUE),
+   decList()),
+  expList(
+   intExp(0),
+   expList()))
+34:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(g,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList(
+        field(b,
+         string,
+         TRUE),
+        fieldList())),
+      int,
+      varExp(
+       simpleVar(a))),
+     fundecList())),
+   decList()),
+  expList(
+   callExp(g,
+    expList(
+     stringExp(one),
+     expList(
+      stringExp(two),
+      expList()))),
+   expList()))
+35:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(g,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList(
+        field(b,
+         string,
+         TRUE),
+        fieldList())),
+      int,
+      varExp(
+       simpleVar(a))),
+     fundecList())),
+   decList()),
+  expList(
+   callExp(g,
+    expList(
+     stringExp(one),
+     expList())),
+   expList()))
+36:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(g,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList(
+        field(b,
+         string,
+         TRUE),
+        fieldList())),
+      int,
+      varExp(
+       simpleVar(a))),
+     fundecList())),
+   decList()),
+  expList(
+   callExp(g,
+    expList(
+     intExp(3),
+     expList(
+      stringExp(one),
+      expList(
+       intExp(5),
+       expList())))),
+   expList()))
+37:
+ letExp(
+  decList(
+   varDec(a,
+    NULL,
+    intExp(0),
+    TRUE),
+   decList(
+    varDec(a,
+     NULL,
+     stringExp( ),
+     TRUE),
+    decList())),
+  expList(
+   intExp(0),
+   expList()))
+38:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(a,
+      nameTy(int)),
+     nametyList(
+      namety(a,
+       nameTy(string)),
+      nametyList()))),
+   decList()),
+  expList(
+   intExp(0),
+   expList()))
+39:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(g,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList()),
+      int,
+      varExp(
+       simpleVar(a))),
+     fundecList(
+      fundec(g,
+       fieldList(
+        field(a,
+         int,
+         TRUE),
+        fieldList()),
+       int,
+       varExp(
+        simpleVar(a))),
+      fundecList()))),
+   decList()),
+  expList(
+   intExp(0),
+   expList()))
+40:
+ letExp(
+  decList(
+   functionDec(
+    fundecList(
+     fundec(g,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList()),
+      NULL,
+      varExp(
+       simpleVar(a))),
+     fundecList())),
+   decList()),
+  expList(
+   callExp(g,
+    expList(
+     intExp(2),
+     expList())),
+   expList()))
+41:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(a,
+      nameTy(int)),
+     nametyList())),
+   decList()),
+  expList(
+   letExp(
+    decList(
+     typeDec(
+      nametyList(
+       namety(a,
+        nameTy(string)),
+       nametyList())),
+     decList()),
+    expList(
+     intExp(0),
+     expList())),
+   expList()))
+42:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(arrtype1,
+      arrayTy(int)),
+     nametyList(
+      namety(rectype1,
+       recordTy(
+        fieldList(
+         field(name,
+          string,
+          TRUE),
+         fieldList(
+          field(address,
+           string,
+           TRUE),
+          fieldList(
+           field(id,
+            int,
+            TRUE),
+           fieldList(
+            field(age,
+             int,
+             TRUE),
+            fieldList())))))),
+      nametyList(
+       namety(arrtype2,
+        arrayTy(rectype1)),
+       nametyList(
+        namety(rectype2,
+         recordTy(
+          fieldList(
+           field(name,
+            string,
+            TRUE),
+           fieldList(
+            field(dates,
+             arrtype1,
+             TRUE),
+            fieldList())))),
+        nametyList(
+         namety(arrtype3,
+          arrayTy(string)),
+         nametyList())))))),
+   decList(
+    varDec(arr1,
+     NULL,
+     arrayExp(arrtype1,
+      intExp(10),
+      intExp(0)),
+     TRUE),
+    decList(
+     varDec(arr2,
+      NULL,
+      arrayExp(arrtype2,
+       intExp(5),
+       recordExp(rectype1,
+        efieldList(
+         efield(name,
+          stringExp(aname)),
+         efieldList(
+          efield(address,
+           stringExp(somewhere)),
+          efieldList(
+           efield(id,
+            intExp(0)),
+           efieldList(
+            efield(age,
+             intExp(0)),
+            efieldList())))))),
+      TRUE),
+     decList(
+      varDec(arr3,
+       arrtype3,
+       arrayExp(arrtype3,
+        intExp(100),
+        stringExp()),
+       TRUE),
+      decList(
+       varDec(rec1,
+        NULL,
+        recordExp(rectype1,
+         efieldList(
+          efield(name,
+           stringExp(Kapoios)),
+          efieldList(
+           efield(address,
+            stringExp(Kapou)),
+           efieldList(
+            efield(id,
+             intExp(2432)),
+            efieldList(
+             efield(age,
+              intExp(44)),
+             efieldList()))))),
+        TRUE),
+       decList(
+        varDec(rec2,
+         NULL,
+         recordExp(rectype2,
+          efieldList(
+           efield(name,
+            stringExp(Allos)),
+           efieldList(
+            efield(dates,
+             arrayExp(arrtype1,
+              intExp(3),
+              intExp(1900))),
+            efieldList()))),
+         TRUE),
+        decList())))))),
+  expList(
+   assignExp(
+    subscriptVar(
+     simpleVar(arr1),
+     intExp(0)),
+    intExp(1)),
+   expList(
+    assignExp(
+     subscriptVar(
+      simpleVar(arr1),
+      intExp(9)),
+     intExp(3)),
+    expList(
+     assignExp(
+      fieldVar(
+       subscriptVar(
+        simpleVar(arr2),
+        intExp(3)),
+       name),
+      stringExp(kati)),
+     expList(
+      assignExp(
+       fieldVar(
+        subscriptVar(
+         simpleVar(arr2),
+         intExp(1)),
+        age),
+       intExp(23)),
+      expList(
+       assignExp(
+        subscriptVar(
+         simpleVar(arr3),
+         intExp(34)),
+        stringExp(sfd)),
+       expList(
+        assignExp(
+         fieldVar(
+          simpleVar(rec1),
+          name),
+         stringExp(sdf)),
+        expList(
+         assignExp(
+          subscriptVar(
+           fieldVar(
+            simpleVar(rec2),
+            dates),
+           intExp(0)),
+          intExp(2323)),
+         expList(
+          assignExp(
+           subscriptVar(
+            fieldVar(
+             simpleVar(rec2),
+             dates),
+            intExp(2)),
+           intExp(2323)),
+          expList())))))))))
+43:
  letExp(
   decList(
    varDec(a,
@@ -653,119 +1318,156 @@
      simpleVar(a)),
     intExp(3)),
    expList()))
-32:
- varExp(
-  simpleVar(true))
-33:
+44:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(rectype,
+      recordTy(
+       fieldList(
+        field(name,
+         string,
+         TRUE),
+        fieldList(
+         field(id,
+          int,
+          TRUE),
+         fieldList())))),
+     nametyList())),
+   decList(
+    varDec(b,
+     rectype,
+     nilExp(),
+     TRUE),
+    decList())),
+  expList(
+   assignExp(
+    simpleVar(b),
+    nilExp()),
+   expList()))
+45:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(rectype,
+      recordTy(
+       fieldList(
+        field(name,
+         string,
+         TRUE),
+        fieldList(
+         field(id,
+          int,
+          TRUE),
+         fieldList())))),
+     nametyList())),
+   decList(
+    varDec(a,
+     NULL,
+     nilExp(),
+     TRUE),
+    decList())),
+  expList(
+   varExp(
+    simpleVar(a)),
+   expList()))
+46:
+ letExp(
+  decList(
+   typeDec(
+    nametyList(
+     namety(rectype,
+      recordTy(
+       fieldList(
+        field(name,
+         string,
+         TRUE),
+        fieldList(
+         field(id,
+          int,
+          TRUE),
+         fieldList())))),
+     nametyList())),
+   decList(
+    varDec(b,
+     rectype,
+     nilExp(),
+     TRUE),
+    decList())),
+  expList(
+   opExp(
+    EQUAL,
+    varExp(
+     simpleVar(b)),
+    nilExp()),
+   expList(
+    opExp(
+     NOTEQUAL,
+     varExp(
+      simpleVar(b)),
+     nilExp()),
+    expList())))
+47:
  letExp(
   decList(
    typeDec(
     nametyList(
      namety(a,
-      recordTy(
-       fieldList(
-        field(a,
-         int,
-         TRUE),
-        fieldList()))),
+      nameTy(int)),
      nametyList())),
    decList(
-    varDec(a,
+    varDec(b,
      NULL,
-     intExp(0),
+     intExp(4),
      TRUE),
     decList(
-     functionDec(
-      fundecList(
-       fundec(a,
-        fieldList(
-         field(a,
-          a,
-          TRUE),
-         fieldList()),
-        a,
-        recordExp(a,
-         efieldList(
-          efield(a,
-           varExp(
-            fieldVar(
-             simpleVar(a),
-             a))),
-          efieldList()))),
-       fundecList())),
+     typeDec(
+      nametyList(
+       namety(a,
+        nameTy(string)),
+       nametyList())),
      decList()))),
   expList(
-   callExp(a,
-    expList(
-     recordExp(a,
-      efieldList(
-       efield(a,
-        varExp(
-         simpleVar(a))),
-       efieldList())),
-     expList())),
+   intExp(0),
    expList()))
-34:
+48:
  letExp(
   decList(
    functionDec(
     fundecList(
-     fundec(f,
-      fieldList(),
-      NULL,
-      letExp(
-       decList(
-        functionDec(
-         fundecList(
-          fundec(g,
-           fieldList(
-            field(i,
-             int,
-             TRUE),
-            fieldList()),
-           int,
-           iffExp(
-            opExp(
-             EQUAL,
-             varExp(
-              simpleVar(i)),
-             intExp(3)),
-            breakExp())),
-          fundecList())),
-        decList()),
-       expList(
-        forExp(i,
-         intExp(0),
-         intExp(9),
-         seqExp(
-          expList(
-           callExp(g,
-            expList(
-             varExp(
-              simpleVar(i)),
-             expList())),
-           expList(
-            callExp(print,
-             expList(
-              callExp(chr,
-               expList(
-                opExp(
-                 PLUS,
-                 varExp(
-                  simpleVar(i)),
-                 callExp(ord,
-                  expList(
-                   stringExp(0),
-                   expList()))),
-                expList())),
-              expList())),
-            expList()))),
-         TRUE),
-        expList()))),
+     fundec(g,
+      fieldList(
+       field(a,
+        int,
+        TRUE),
+       fieldList()),
+      int,
+      varExp(
+       simpleVar(a))),
      fundecList())),
-   decList()),
+   decList(
+    typeDec(
+     nametyList(
+      namety(t,
+       nameTy(int)),
+      nametyList())),
+    decList(
+     functionDec(
+      fundecList(
+       fundec(g,
+        fieldList(
+         field(a,
+          int,
+          TRUE),
+         fieldList()),
+        int,
+        varExp(
+         simpleVar(a))),
+       fundecList())),
+     decList()))),
   expList(
-   callExp(f,
-    expList()),
+   intExp(0),
    expList()))
-35:
+49:
