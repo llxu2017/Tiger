@@ -131,7 +131,10 @@
       <OutputFile>%(Filename).flex.c</OutputFile>
     </Flex>
     <PostBuildEvent>
-      <Command>copy /Y tiger.flex.c ..\5_Semantic\
+      <Command>copy /Y tiger.flex.c ..\6_Frame\
+del /F ..\6_Frame\lex.yy.c
+ren ..\6_Frame\tiger.flex.c lex.yy.c
+copy /Y tiger.flex.c ..\5_Semantic\
 del /F ..\5_Semantic\lex.yy.c
 ren ..\5_Semantic\tiger.flex.c lex.yy.c
 copy /Y tiger.flex.c ..\4_AST\
@@ -174,7 +177,10 @@ ren ..\3_Parsing\tiger.flex.c lex.yy.c</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y tiger.flex.c ..\5_Semantic\
+      <Command>copy /Y tiger.flex.c ..\6_Frame\
+del /F ..\6_Frame\lex.yy.c
+ren ..\6_Frame\tiger.flex.c lex.yy.c
+copy /Y tiger.flex.c ..\5_Semantic\
 del /F ..\5_Semantic\lex.yy.c
 ren ..\5_Semantic\tiger.flex.c lex.yy.c
 copy /Y tiger.flex.c ..\4_AST\
