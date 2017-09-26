@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{D4662598-A64D-4D06-B067-3CB59B03221F}</ProjectGuid>
-    <RootNamespace>My5_Semantic</RootNamespace>
+    <ProjectGuid>{BF02F66C-C491-4BD6-91A3-E4F3A52E2FFC}</ProjectGuid>
+    <RootNamespace>My6_Frame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -52,9 +52,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\..\..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.props" />
-  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -81,13 +79,6 @@
     <Link>
       <SubSystem>Console</SubSystem>
     </Link>
-    <Bison>
-      <OutputFile>%(Filename).tab.c</OutputFile>
-    </Bison>
-    <PostBuildEvent>
-      <Command>copy /Y tiger.tab.c ..\6_Frame\
-copy /Y tiger.tab.h ..\6_Frame\</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -123,27 +114,7 @@ copy /Y tiger.tab.h ..\6_Frame\</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
     </Link>
-    <Bison>
-      <OutputFile>%(Filename).tab.c</OutputFile>
-    </Bison>
-    <PostBuildEvent>
-      <Command>copy /Y tiger.tab.c ..\6_Frame\
-copy /Y tiger.tab.h ..\6_Frame\</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="absyn.h" />
-    <ClInclude Include="env.h" />
-    <ClInclude Include="errormsg.h" />
-    <ClInclude Include="parse.h" />
-    <ClInclude Include="prabsyn.h" />
-    <ClInclude Include="semant.h" />
-    <ClInclude Include="symbol.h" />
-    <ClInclude Include="table.h" />
-    <ClInclude Include="tiger.tab.h" />
-    <ClInclude Include="types.h" />
-    <ClInclude Include="util.h" />
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="absyn.c" />
     <ClCompile Include="env.c" />
@@ -159,16 +130,18 @@ copy /Y tiger.tab.h ..\6_Frame\</Command>
     <ClCompile Include="util.c" />
   </ItemGroup>
   <ItemGroup>
-    <Bison Include="tiger.y">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <FileType>Document</FileType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).tab.c</OutputFile>
-      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).tab.c</OutputFile>
-    </Bison>
+    <ClInclude Include="absyn.h" />
+    <ClInclude Include="env.h" />
+    <ClInclude Include="errormsg.h" />
+    <ClInclude Include="parse.h" />
+    <ClInclude Include="prabsyn.h" />
+    <ClInclude Include="semant.h" />
+    <ClInclude Include="symbol.h" />
+    <ClInclude Include="table.h" />
+    <ClInclude Include="tiger.tab.h" />
+    <ClInclude Include="types.h" />
+    <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.targets" />
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>
