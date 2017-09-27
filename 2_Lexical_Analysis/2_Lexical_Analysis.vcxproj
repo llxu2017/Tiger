@@ -203,6 +203,7 @@ ren ..\3_Parsing\tiger.flex.c lex.yy.c </Command>
   <ItemGroup>
     <ClInclude Include="errormsg.h" />
     <ClInclude Include="tiger.tab.h" />
+    <ClInclude Include="tokens.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>

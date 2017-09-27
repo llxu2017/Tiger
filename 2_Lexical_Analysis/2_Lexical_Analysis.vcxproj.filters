@@ -35,6 +35,9 @@
     <ClInclude Include="util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tiger.tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="tokens.h">
       <Filter>Header Files</Filter>
     </ClInclude>
