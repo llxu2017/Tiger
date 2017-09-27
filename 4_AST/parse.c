@@ -30,21 +30,21 @@ int main()
 	for (i = 0; i < 49; ++i)
 	{
 		fprintf(fp, "%d:\n", i);
-		snprintf(buf, 100, "%s%d%s", "D:\\tiger\\tiger\\testcases\\test", i, ".tig");
+		snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Official\\test", i, ".tig");
 		absyn_root = parse(buf);
 		pr_exp(fp, absyn_root, 0);
 		fprintf(fp, "\n");
 	}
 	{
 		fprintf(fp, "%s:", "merge");
-		snprintf(buf, 100, "%s", "D:\\tiger\\tiger\\testcases\\merge.tig");
+		snprintf(buf, 100, "%s", "..\\1_Tests\\Official\\merge.tig");
 		absyn_root = parse(buf);
 		pr_exp(fp, absyn_root, 0);
 		fprintf(fp, "\n");
 	}
 	{
 		fprintf(fp, "%s:", "queens");
-		snprintf(buf, 100, "%s", "D:\\tiger\\tiger\\testcases\\queens.tig");
+		snprintf(buf, 100, "%s", "..\\1_Tests\\Official\\queens.tig");
 		absyn_root = parse(buf);
 		pr_exp(fp, absyn_root, 0);
 		fprintf(fp, "\n");

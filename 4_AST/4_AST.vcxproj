@@ -53,7 +53,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\..\..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.props" />
+    <Import Project="..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -81,6 +81,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /Y tiger.tab.c ..\5_Semantic\
+copy /Y tiger.tab.h ..\5_Semantic\
+copy /Y tiger.tab.c ..\6_Frame\
+copy /Y tiger.tab.h ..\6_Frame\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -116,6 +122,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /Y tiger.tab.c ..\5_Semantic\
+copy /Y tiger.tab.h ..\5_Semantic\
+copy /Y tiger.tab.c ..\6_Frame\
+copy /Y tiger.tab.h ..\6_Frame\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="absyn.c" />
@@ -148,6 +160,6 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.targets" />
+    <Import Project="..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.targets" />
   </ImportGroup>
 </Project>

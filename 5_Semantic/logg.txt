@@ -1,76 +1,76 @@
 1
-D:\tiger\Testcases\Bad\1.tig:2.9: undefined variable "true".
-D:\tiger\Testcases\Bad\1.tig:2.9: if test must be integer type.
-D:\tiger\Testcases\Bad\1.tig:2.27: if branches type mismatch.
+..\1_Tests\Bad\1.tig:2.9: undefined variable "true".
+..\1_Tests\Bad\1.tig:2.9: if test must be integer type.
+..\1_Tests\Bad\1.tig:2.27: if branches type mismatch.
 2
-D:\tiger\Testcases\Bad\2.tig:2.7: undefined variable "false".
-D:\tiger\Testcases\Bad\2.tig:2.7: if test must be integer type.
+..\1_Tests\Bad\2.tig:2.7: undefined variable "false".
+..\1_Tests\Bad\2.tig:2.7: if test must be integer type.
 3
-D:\tiger\Testcases\Bad\3.tig:2.10: integer required.
+..\1_Tests\Bad\3.tig:2.10: integer required.
 4
-D:\tiger\Testcases\Bad\4.tig:1.1: undefined variable "true".
-D:\tiger\Testcases\Bad\4.tig:2.1: can not compare different types.
+..\1_Tests\Bad\4.tig:1.1: undefined variable "true".
+..\1_Tests\Bad\4.tig:2.1: can not compare different types.
 5
-D:\tiger\Testcases\Bad\5.tig:7.1: assignment type mismatch.
+..\1_Tests\Bad\5.tig:7.1: assignment type mismatch.
 6
-D:\tiger\Testcases\Bad\6.tig:5.16: function arguments type mismatch.
+..\1_Tests\Bad\6.tig:5.16: function arguments type mismatch.
 7
-D:\tiger\Testcases\Bad\7.tig:7.1: assignment type mismatch.
+..\1_Tests\Bad\7.tig:7.1: assignment type mismatch.
 8
-D:\tiger\Testcases\Bad\8.tig:6.1: not an array.
+..\1_Tests\Bad\8.tig:6.1: not an array.
 9
-D:\tiger\Testcases\Bad\9.tig:5.4: not a record.
+..\1_Tests\Bad\9.tig:5.4: not a record.
 10
-D:\tiger\Testcases\Bad\10.tig:2.25: if branches type mismatch.
+..\1_Tests\Bad\10.tig:2.25: if branches type mismatch.
 11
-D:\tiger\Testcases\Bad\11.tig:2.16: for loop high range must be integer type.
+..\1_Tests\Bad\11.tig:2.16: for loop high range must be integer type.
 12
-D:\tiger\Testcases\Bad\12.tig:2.20: cannot modify for loop index.
+..\1_Tests\Bad\12.tig:2.20: cannot modify for loop index.
 13
-D:\tiger\Testcases\Bad\13.tig:3.17: function return type mismatch.
+..\1_Tests\Bad\13.tig:3.17: function return type mismatch.
 14
-D:\tiger\Testcases\Bad\14.tig:3.42: undefined type "treelist".
+..\1_Tests\Bad\14.tig:3.42: undefined type "treelist".
 15
-D:\tiger\Testcases\Bad\15.tig:9.1: assignment type mismatch.
+..\1_Tests\Bad\15.tig:9.1: assignment type mismatch.
 16
-D:\tiger\Testcases\Bad\16.tig:9.1: assignment type mismatch.
+..\1_Tests\Bad\16.tig:9.1: assignment type mismatch.
 17
-D:\tiger\Testcases\Bad\17.tig:6.7: undefined field name "blarg".
+..\1_Tests\Bad\17.tig:6.7: undefined field name "blarg".
 18
-D:\tiger\Testcases\Bad\18.tig:5.9: function arguments type mismatch.
-D:\tiger\Testcases\Bad\18.tig:5.9: number of function arguments do not match.
+..\1_Tests\Bad\18.tig:5.9: function arguments type mismatch.
+..\1_Tests\Bad\18.tig:5.9: number of function arguments do not match.
 19
-D:\tiger\Testcases\Bad\19.tig:5.13: number of function arguments do not match.
+..\1_Tests\Bad\19.tig:5.13: number of function arguments do not match.
 20
-D:\tiger\Testcases\Bad\20.tig:3.10: var declaration type mismatch.
+..\1_Tests\Bad\20.tig:3.10: var declaration type mismatch.
 21
-D:\tiger\Testcases\Bad\21.tig:6.5: variable not bound to a function.
+..\1_Tests\Bad\21.tig:6.5: variable not bound to a function.
 22
 23
-D:\tiger\Testcases\Bad\23.tig:2.18: for loop high range must be integer type.
+..\1_Tests\Bad\23.tig:2.18: for loop high range must be integer type.
 24
-D:\tiger\Testcases\Bad\24.tig:7.30: integer required.
-D:\tiger\Testcases\Bad\24.tig:9.1: function return type mismatch.
+..\1_Tests\Bad\24.tig:7.30: integer required.
+..\1_Tests\Bad\24.tig:9.1: function return type mismatch.
 25
-D:\tiger\Testcases\Bad\25.tig:7.7: undefined field name "nam".
+..\1_Tests\Bad\25.tig:7.7: undefined field name "nam".
 26
-D:\tiger\Testcases\Bad\26.tig:7.16: assignment type mismatch.
-D:\tiger\Testcases\Bad\26.tig:9.1: assignment type mismatch.
+..\1_Tests\Bad\26.tig:7.16: assignment type mismatch.
+..\1_Tests\Bad\26.tig:9.1: assignment type mismatch.
 27
-D:\tiger\Testcases\Bad\27.tig:3.9: integer required.
+..\1_Tests\Bad\27.tig:3.9: integer required.
 28
-D:\tiger\Testcases\Bad\28.tig:7.52: var declaration type mismatch.
+..\1_Tests\Bad\28.tig:7.52: var declaration type mismatch.
 29
-D:\tiger\Testcases\Bad\29.tig:7.42: var declaration type mismatch.
+..\1_Tests\Bad\29.tig:7.42: var declaration type mismatch.
 30
-D:\tiger\Testcases\Bad\30.tig:2.11: break can only be used in while or for loops.
+..\1_Tests\Bad\30.tig:2.11: break can only be used in while or for loops.
 31
-D:\tiger\Testcases\Bad\31.tig:6.4: integer required.
+..\1_Tests\Bad\31.tig:6.4: integer required.
 32
-D:\tiger\Testcases\Bad\32.tig:1.1: undefined variable "true".
+..\1_Tests\Bad\32.tig:1.1: undefined variable "true".
 33
-D:\tiger\Testcases\Bad\33.tig:5.15: record field type mismatch.
+..\1_Tests\Bad\33.tig:5.15: record field type mismatch.
 34
-D:\tiger\Testcases\Bad\34.tig:5.17: break can only be used in while or for loops.
-D:\tiger\Testcases\Bad\34.tig:6.2: function return type mismatch.
+..\1_Tests\Bad\34.tig:5.17: break can only be used in while or for loops.
+..\1_Tests\Bad\34.tig:6.2: function return type mismatch.
 Press any key to continue . . .

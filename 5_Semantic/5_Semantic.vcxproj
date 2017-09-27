@@ -53,7 +53,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\..\..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.props" />
+    <Import Project="..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -85,8 +85,8 @@
       <OutputFile>%(Filename).tab.c</OutputFile>
     </Bison>
     <PostBuildEvent>
-      <Command>copy /Y tiger.tab.c ..\6_Frame\
-copy /Y tiger.tab.h ..\6_Frame\</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -127,8 +127,8 @@ copy /Y tiger.tab.h ..\6_Frame\</Command>
       <OutputFile>%(Filename).tab.c</OutputFile>
     </Bison>
     <PostBuildEvent>
-      <Command>copy /Y tiger.tab.c ..\6_Frame\
-copy /Y tiger.tab.h ..\6_Frame\</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -169,6 +169,6 @@ copy /Y tiger.tab.h ..\6_Frame\</Command>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.targets" />
+    <Import Project="..\win_flex_bison3-latest\custom_build_rules\win_flex_bison_custom_build.targets" />
   </ImportGroup>
 </Project>

@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\Bad">
       <UniqueIdentifier>{3df2186c-4072-4965-9886-6f1438dd6055}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Official">
+      <UniqueIdentifier>{25ad7062-5047-45c9-bf69-9da238ef97ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Good\1.tig">
@@ -299,6 +302,162 @@
     </None>
     <None Include="Bad\34.tig">
       <Filter>Resource Files\Bad</Filter>
+    </None>
+    <None Include="Official\merge.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\queens.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test0.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test1.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test2.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test3.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test4.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test5.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test6.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test7.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test8.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test9.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test10.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test11.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test12.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test13.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test14.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test15.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test16.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test17.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test18.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test19.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test20.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test21.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test22.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test23.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test24.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test25.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test26.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test27.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test28.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test29.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test30.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test31.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test32.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test33.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test34.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test35.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test36.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test37.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test38.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test39.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test40.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test41.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test42.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test43.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test44.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test45.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test46.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test47.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test48.tig">
+      <Filter>Resource Files\Official</Filter>
+    </None>
+    <None Include="Official\test49.tig">
+      <Filter>Resource Files\Official</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
 	for (i = 1; i < 50; ++i)
 	{
 		printf("%d:", i);
-		snprintf(buf, 100, "%s%d%s", "D:\\tiger\\tiger\\testcases\\test", i, ".tig");
+		snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Official\\test", i, ".tig");
 		EM_reset(buf);
 		analyze();
 	}

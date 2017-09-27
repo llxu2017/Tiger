@@ -70,19 +70,7 @@
           int,
           TRUE),
          fieldList())))),
-     nametyList(
-      namety(rectype1,
-       recordTy(
-        fieldList(
-         field(name,
-          string,
-          TRUE),
-         fieldList(
-          field(age,
-           int,
-           TRUE),
-          fieldList())))),
-      nametyList()))),
+     nametyList())),
    decList(
     varDec(rec1,
      rectype,
@@ -348,7 +336,7 @@
    intExp(6)))
 
 11:
- forExp(,
+ forExp(i,
   intExp(10),
   stringExp( ),
   assignExp(
@@ -368,7 +356,7 @@
     TRUE),
    decList()),
   expList(
-   forExp(,
+   forExp(i,
     intExp(0),
     intExp(100),
     seqExp(
@@ -2025,7 +2013,7 @@ queens: letExp(
             NULL,
             seqExp(
              expList(
-              forExp(,
+              forExp(i,
                intExp(0),
                opExp(
                 MINUS,
@@ -2034,7 +2022,7 @@ queens: letExp(
                 intExp(1)),
                seqExp(
                 expList(
-                 forExp(,
+                 forExp(j,
                   intExp(0),
                   opExp(
                    MINUS,
@@ -2091,7 +2079,7 @@ queens: letExp(
                   simpleVar(N))),
                 callExp(printboard,
                  expList()),
-                forExp(,
+                forExp(r,
                  intExp(0),
                  opExp(
                   MINUS,
