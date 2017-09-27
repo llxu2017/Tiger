@@ -47,6 +47,7 @@ artifacts/
 
 lex.yy.c
 tiger.tab.c
+tiger.flex.c
 tiger.tab.h
 log*.txt
 tree.txt
