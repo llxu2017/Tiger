@@ -132,16 +132,12 @@
     </Flex>
     <PostBuildEvent>
       <Command>copy /Y tiger.flex.c ..\6_Frame\ 
-del /F ..\6_Frame\lex.yy.c 
 ren ..\6_Frame\tiger.flex.c lex.yy.c 
 copy /Y tiger.flex.c ..\5_Semantic\ 
-del /F ..\5_Semantic\lex.yy.c 
 ren ..\5_Semantic\tiger.flex.c lex.yy.c 
 copy /Y tiger.flex.c ..\4_AST\ 
-del /F ..\4_AST\lex.yy.c 
 ren ..\4_AST\tiger.flex.c lex.yy.c 
 copy /Y tiger.flex.c ..\3_Parsing\ 
-del /F ..\3_Parsing\lex.yy.c 
 ren ..\3_Parsing\tiger.flex.c lex.yy.c </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -178,16 +174,12 @@ ren ..\3_Parsing\tiger.flex.c lex.yy.c </Command>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y tiger.flex.c ..\6_Frame\ 
-del /F ..\6_Frame\lex.yy.c 
 ren ..\6_Frame\tiger.flex.c lex.yy.c 
 copy /Y tiger.flex.c ..\5_Semantic\ 
-del /F ..\5_Semantic\lex.yy.c 
 ren ..\5_Semantic\tiger.flex.c lex.yy.c 
 copy /Y tiger.flex.c ..\4_AST\ 
-del /F ..\4_AST\lex.yy.c 
 ren ..\4_AST\tiger.flex.c lex.yy.c 
 copy /Y tiger.flex.c ..\3_Parsing\ 
-del /F ..\3_Parsing\lex.yy.c 
 ren ..\3_Parsing\tiger.flex.c lex.yy.c </Command>
     </PostBuildEvent>
     <Flex>
