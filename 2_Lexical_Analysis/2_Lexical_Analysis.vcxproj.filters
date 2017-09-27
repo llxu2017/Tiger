@@ -24,7 +24,7 @@
     <ClCompile Include="util.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tiger.flex.c">
+    <ClCompile Include="lex.yy.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,9 +33,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="util.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tiger.tab.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tokens.h">

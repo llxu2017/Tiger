@@ -600,7 +600,11 @@ char *yytext;
 #include <math.h>
 #include <string.h>
 #include "util.h"
+#ifdef BOOTSTRAP_LEX
 #include "tokens.h"
+#else
+#include "tiger.tab.h"
+#endif
 #include "errormsg.h"
 
 int charPos=1;
@@ -618,10 +622,10 @@ void adjust(void)
  charPos+=yyleng;
 }
 
-#line 621 "tiger.flex.c"
+#line 625 "tiger.flex.c"
 /* Lex Definitions: */
 
-#line 624 "tiger.flex.c"
+#line 628 "tiger.flex.c"
 
 #define INITIAL 0
 #define comment 1
@@ -847,15 +851,15 @@ YY_DECL
 		}
 
 	{
-#line 34 "tiger.l"
+#line 38 "tiger.l"
 
 
-#line 37 "tiger.l"
+#line 41 "tiger.l"
         #define MAX_STR_CONST 10000
         char string_buf[MAX_STR_CONST];
         char *string_buf_ptr = string_buf;
 
-#line 858 "tiger.flex.c"
+#line 862 "tiger.flex.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -914,55 +918,55 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 41 "tiger.l"
+#line 45 "tiger.l"
 {adjust(); yy_push_state(comment);}
 	YY_BREAK
 
 case 2:
 YY_RULE_SETUP
-#line 43 "tiger.l"
+#line 47 "tiger.l"
 {adjust(); yy_push_state(comment);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 44 "tiger.l"
+#line 48 "tiger.l"
 {adjust(); continue;}
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 45 "tiger.l"
+#line 49 "tiger.l"
 {adjust(); continue;}
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 46 "tiger.l"
+#line 50 "tiger.l"
 {adjust(); EM_newline(); continue;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 47 "tiger.l"
+#line 51 "tiger.l"
 {adjust(); continue;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 48 "tiger.l"
+#line 52 "tiger.l"
 {adjust(); yy_pop_state();}
 	YY_BREAK
 case YY_STATE_EOF(comment):
-#line 49 "tiger.l"
+#line 53 "tiger.l"
 {adjust(); EM_error(EM_tokPos,"Unclosed comment"); BEGIN(INITIAL); yyterminate();}
 	YY_BREAK
 
 case 8:
 YY_RULE_SETUP
-#line 53 "tiger.l"
+#line 57 "tiger.l"
 {adjust(); string_buf_ptr = string_buf; BEGIN(str);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 55 "tiger.l"
+#line 59 "tiger.l"
 {
 							/* saw closing quote - all done */
 							adjust();
@@ -978,7 +982,7 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 67 "tiger.l"
+#line 71 "tiger.l"
 {
 							/* error - unterminated string constant */
 							/* generate error message */
@@ -987,7 +991,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 73 "tiger.l"
+#line 77 "tiger.l"
 {
 							/* octal escape sequence */
 							adjust();
@@ -1000,7 +1004,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 83 "tiger.l"
+#line 87 "tiger.l"
 {
 							/* generate error - bad escape sequence; something
 							* like '\48' or '\0777777'
@@ -1010,42 +1014,42 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 90 "tiger.l"
+#line 94 "tiger.l"
 {adjust(); *string_buf_ptr++ = '\n';}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 91 "tiger.l"
+#line 95 "tiger.l"
 {adjust(); *string_buf_ptr++ = '\t';}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 92 "tiger.l"
+#line 96 "tiger.l"
 {adjust(); *string_buf_ptr++ = '\r';}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 93 "tiger.l"
+#line 97 "tiger.l"
 {adjust(); *string_buf_ptr++ = '\b';}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 94 "tiger.l"
+#line 98 "tiger.l"
 {adjust(); *string_buf_ptr++ = '\f';}
 	YY_BREAK
 case YY_STATE_EOF(str):
-#line 95 "tiger.l"
+#line 99 "tiger.l"
 {adjust(); EM_error(EM_tokPos,"Unclosed string"); BEGIN(INITIAL); yyterminate();}
 	YY_BREAK
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
-#line 97 "tiger.l"
+#line 101 "tiger.l"
 {adjust(); *string_buf_ptr++ = yytext[1];}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 99 "tiger.l"
+#line 103 "tiger.l"
 {
 							adjust();
 							char *yptr = yytext;
@@ -1056,253 +1060,253 @@ YY_RULE_SETUP
 /* Keywords */
 case 20:
 YY_RULE_SETUP
-#line 108 "tiger.l"
+#line 112 "tiger.l"
 {adjust(); return ARRAY;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 109 "tiger.l"
+#line 113 "tiger.l"
 {adjust(); return IF;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 110 "tiger.l"
+#line 114 "tiger.l"
 {adjust(); return THEN;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 111 "tiger.l"
+#line 115 "tiger.l"
 {adjust(); return ELSE;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 112 "tiger.l"
+#line 116 "tiger.l"
 {adjust(); return WHILE;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 113 "tiger.l"
+#line 117 "tiger.l"
 {adjust(); return FOR;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 114 "tiger.l"
+#line 118 "tiger.l"
 {adjust(); return TO;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 115 "tiger.l"
+#line 119 "tiger.l"
 {adjust(); return DO;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 116 "tiger.l"
+#line 120 "tiger.l"
 {adjust(); return LET;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 117 "tiger.l"
+#line 121 "tiger.l"
 {adjust(); return IN;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 118 "tiger.l"
+#line 122 "tiger.l"
 {adjust(); return END;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 119 "tiger.l"
+#line 123 "tiger.l"
 {adjust(); return OF;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 120 "tiger.l"
+#line 124 "tiger.l"
 {adjust(); return BREAK;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 121 "tiger.l"
+#line 125 "tiger.l"
 {adjust(); return NIL;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 122 "tiger.l"
+#line 126 "tiger.l"
 {adjust(); return FUNCTION;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 123 "tiger.l"
+#line 127 "tiger.l"
 {adjust(); return VAR;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 124 "tiger.l"
+#line 128 "tiger.l"
 {adjust(); return TYPE;}
 	YY_BREAK
 /* punctuations */
 case 37:
 YY_RULE_SETUP
-#line 128 "tiger.l"
+#line 132 "tiger.l"
 {adjust(); continue;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 129 "tiger.l"
+#line 133 "tiger.l"
 {adjust(); continue;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 130 "tiger.l"
+#line 134 "tiger.l"
 {adjust(); continue;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 131 "tiger.l"
+#line 135 "tiger.l"
 {adjust(); return COMMA;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 132 "tiger.l"
+#line 136 "tiger.l"
 {adjust(); return COLON;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 133 "tiger.l"
+#line 137 "tiger.l"
 {adjust(); return SEMICOLON;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 134 "tiger.l"
+#line 138 "tiger.l"
 {adjust(); return LPAREN;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 135 "tiger.l"
+#line 139 "tiger.l"
 {adjust(); return RPAREN;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 136 "tiger.l"
+#line 140 "tiger.l"
 {adjust(); return LBRACK;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 137 "tiger.l"
+#line 141 "tiger.l"
 {adjust(); return RBRACK;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 138 "tiger.l"
+#line 142 "tiger.l"
 {adjust(); return LBRACE;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 139 "tiger.l"
+#line 143 "tiger.l"
 {adjust(); return RBRACE;}
 	YY_BREAK
 case 49:
 /* rule 49 can match eol */
 YY_RULE_SETUP
-#line 140 "tiger.l"
+#line 144 "tiger.l"
 {adjust(); EM_newline(); continue;}
 	YY_BREAK
 /* Operators */
 case 50:
 YY_RULE_SETUP
-#line 144 "tiger.l"
+#line 148 "tiger.l"
 {adjust(); return DOT;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 145 "tiger.l"
+#line 149 "tiger.l"
 {adjust(); return PLUS;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 146 "tiger.l"
+#line 150 "tiger.l"
 {adjust(); return MINUS;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 147 "tiger.l"
+#line 151 "tiger.l"
 {adjust(); return TIMES;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 148 "tiger.l"
+#line 152 "tiger.l"
 {adjust(); return DIVIDE;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 149 "tiger.l"
+#line 153 "tiger.l"
 {adjust(); return EQ;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 150 "tiger.l"
+#line 154 "tiger.l"
 {adjust(); return NEQ;}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 151 "tiger.l"
+#line 155 "tiger.l"
 {adjust(); return LT;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 152 "tiger.l"
+#line 156 "tiger.l"
 {adjust(); return LE;}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 153 "tiger.l"
+#line 157 "tiger.l"
 {adjust(); return GT;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 154 "tiger.l"
+#line 158 "tiger.l"
 {adjust(); return GE;}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 155 "tiger.l"
+#line 159 "tiger.l"
 {adjust(); return AND;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 156 "tiger.l"
+#line 160 "tiger.l"
 {adjust(); return OR;}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 157 "tiger.l"
+#line 161 "tiger.l"
 {adjust(); return ASSIGN;}
 	YY_BREAK
 /* Data types */
 case 64:
 YY_RULE_SETUP
-#line 161 "tiger.l"
+#line 165 "tiger.l"
 {adjust(); yylval.sval=String(yytext); return ID;}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 162 "tiger.l"
+#line 166 "tiger.l"
 {adjust(); yylval.ival=atoi(yytext); return INT;}
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 163 "tiger.l"
+#line 167 "tiger.l"
 {adjust(); BEGIN(INITIAL); yyterminate();}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 164 "tiger.l"
+#line 168 "tiger.l"
 {adjust(); EM_error(EM_tokPos,"illegal token");}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 167 "tiger.l"
+#line 171 "tiger.l"
 ECHO;
 	YY_BREAK
-#line 1305 "tiger.flex.c"
+#line 1309 "tiger.flex.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2346,4 +2350,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 167 "tiger.l"
+#line 171 "tiger.l"

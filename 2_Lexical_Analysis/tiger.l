@@ -2,7 +2,11 @@
 #include <math.h>
 #include <string.h>
 #include "util.h"
+#ifdef BOOTSTRAP_LEX
 #include "tokens.h"
+#else
+#include "tiger.tab.h"
+#endif
 #include "errormsg.h"
 
 int charPos=1;
