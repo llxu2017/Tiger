@@ -87,9 +87,4 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Bison Include="tiger.y">
-      <Filter>Resource Files</Filter>
-    </Bison>
-  </ItemGroup>
 </Project>

@@ -45,6 +45,13 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
+lex.yy.c
+tiger.tab.c
+tiger.tab.h
+log*.txt
+tree.txt
+report.txt
+graph.dot
 *_i.c
 *_p.c
 *_i.h

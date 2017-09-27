@@ -87,6 +87,9 @@ copy /Y tiger.tab.h ..\5_Semantic\
 copy /Y tiger.tab.c ..\6_Frame\
 copy /Y tiger.tab.h ..\6_Frame\</Command>
     </PostBuildEvent>
+    <Bison>
+      <OutputFile>%(Filename).tab.c</OutputFile>
+    </Bison>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -128,6 +131,9 @@ copy /Y tiger.tab.h ..\5_Semantic\
 copy /Y tiger.tab.c ..\6_Frame\
 copy /Y tiger.tab.h ..\6_Frame\</Command>
     </PostBuildEvent>
+    <Bison>
+      <OutputFile>%(Filename).tab.c</OutputFile>
+    </Bison>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="absyn.c" />

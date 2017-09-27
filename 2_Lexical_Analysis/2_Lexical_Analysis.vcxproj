@@ -190,6 +190,9 @@ copy /Y tiger.flex.c ..\3_Parsing\
 del /F ..\3_Parsing\lex.yy.c
 ren ..\3_Parsing\tiger.flex.c lex.yy.c</Command>
     </PostBuildEvent>
+    <Flex>
+      <OutputFile>%(Filename).flex.c</OutputFile>
+    </Flex>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="driver.c" />
