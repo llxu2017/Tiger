@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "util.h"
 #include "errormsg.h"
-#include "tiger.tab.h"
+#include "tokens.h"
 
 YYSTYPE yylval;
 

@@ -2,7 +2,7 @@
 #include <math.h>
 #include <string.h>
 #include "util.h"
-#include "tiger.tab.h"
+#include "tokens.h"
 #include "errormsg.h"
 
 int charPos=1;

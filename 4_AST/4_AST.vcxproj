@@ -82,10 +82,10 @@
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y tiger.tab.c ..\5_Semantic\
-copy /Y tiger.tab.h ..\5_Semantic\
-copy /Y tiger.tab.c ..\6_Frame\
-copy /Y tiger.tab.h ..\6_Frame\</Command>
+      <Command>copy /Y tiger.tab.c ..\5_Semantic\ 
+copy /Y tiger.tab.h ..\5_Semantic\ 
+copy /Y tiger.tab.c ..\6_Frame\ 
+copy /Y tiger.tab.h ..\6_Frame\ </Command>
     </PostBuildEvent>
     <Bison>
       <OutputFile>%(Filename).tab.c</OutputFile>
@@ -126,10 +126,10 @@ copy /Y tiger.tab.h ..\6_Frame\</Command>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y tiger.tab.c ..\5_Semantic\
-copy /Y tiger.tab.h ..\5_Semantic\
-copy /Y tiger.tab.c ..\6_Frame\
-copy /Y tiger.tab.h ..\6_Frame\</Command>
+      <Command>copy /Y tiger.tab.c ..\5_Semantic\ 
+copy /Y tiger.tab.h ..\5_Semantic\ 
+copy /Y tiger.tab.c ..\6_Frame\ 
+copy /Y tiger.tab.h ..\6_Frame\ </Command>
     </PostBuildEvent>
     <Bison>
       <OutputFile>%(Filename).tab.c</OutputFile>

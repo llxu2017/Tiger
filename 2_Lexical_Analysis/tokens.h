@@ -1,9 +1,8 @@
-typedef union {
+typedef union  {
 	int pos;
 	int ival;
-	double fval;
 	string sval;
-} YYSTYPE;
+	} YYSTYPE;
 extern YYSTYPE yylval;
 
 # define ID 257
