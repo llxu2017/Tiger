@@ -19,7 +19,7 @@ string toknames[] = {
 
 
 string tokname(tok) {
-	return tok < 258 || tok>300 ? "BAD_TOKEN" : toknames[tok - 258];
+	return tok < 257 || tok > 299 ? "BAD_TOKEN" : toknames[tok - 257];
 }
 
 void analyze()
