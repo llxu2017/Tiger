@@ -459,5 +459,8 @@
     <None Include="Official\test49.tig">
       <Filter>Resource Files\Official</Filter>
     </None>
+    <None Include="Bad\35.tig">
+      <Filter>Resource Files\Bad</Filter>
+    </None>
   </ItemGroup>
 </Project>

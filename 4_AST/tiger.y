@@ -4,6 +4,10 @@
 #include "symbol.h" 
 #include "errormsg.h"
 
+#define YYDEBUG 1
+
+yydebug = 0;
+
 
 int yylex(void); /* function prototype */
 

@@ -28,13 +28,13 @@ int main()
 	char buf[100];
 	int file = 1;
 	FILE *fp = fopen("tree.txt", "w");
-	const int j = 49;
+	const int j = 35;
 	for (i = 1; i < j + 1; ++i)
 	{
 		printf("%d\n", i);
 		fprintf(fp, "%d:\n", i);
-		snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Official\\test", i, ".tig");
-		//snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Bad\\", i, ".tig");
+		//snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Official\\test", i, ".tig");
+		snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Bad\\", i, ".tig");
 		//snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Good\\", i, ".tig");
 		absyn_root = parse(buf);
 		if (absyn_root) {
@@ -44,22 +44,22 @@ int main()
 		}
 
 	}
-	{
-		fprintf(fp, "%s:", "merge");
-		snprintf(buf, 100, "%s", "..\\1_Tests\\Official\\merge.tig");
-		absyn_root = parse(buf);
-		pr_exp(fp, absyn_root, 0);
-		fprintf(fp, "\n");
-		SEM_transProg(absyn_root);
-	}
-	{
-		fprintf(fp, "%s:", "queens");
-		snprintf(buf, 100, "%s", "..\\1_Tests\\Official\\queens.tig");
-		absyn_root = parse(buf);
-		pr_exp(fp, absyn_root, 0);
-		fprintf(fp, "\n");
-		SEM_transProg(absyn_root);
-	}
+	//{
+	//	fprintf(fp, "%s:", "merge");
+	//	snprintf(buf, 100, "%s", "..\\1_Tests\\Official\\merge.tig");
+	//	absyn_root = parse(buf);
+	//	pr_exp(fp, absyn_root, 0);
+	//	fprintf(fp, "\n");
+	//	SEM_transProg(absyn_root);
+	//}
+	//{
+	//	fprintf(fp, "%s:", "queens");
+	//	snprintf(buf, 100, "%s", "..\\1_Tests\\Official\\queens.tig");
+	//	absyn_root = parse(buf);
+	//	pr_exp(fp, absyn_root, 0);
+	//	fprintf(fp, "\n");
+	//	SEM_transProg(absyn_root);
+	//}
 
 	fclose(fp);
 	return 0;

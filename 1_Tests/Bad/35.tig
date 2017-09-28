@@ -1,0 +1,12 @@
+let
+    var i := 0
+	var j:int := 1
+    var k:int := "1"
+	var l:int := nil
+	var m := nil
+	var n := 1
+in
+    if m = nil then m := 1;
+	if l = nil then l := 1;
+	if nil = nil then m := 2
+end

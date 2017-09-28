@@ -52,6 +52,7 @@ int main(int argc, char **argv) {
 	{
 		printf("%d:", i);
 		snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Official\\test", i, ".tig");
+		//snprintf(buf, 100, "%s%d%s", "..\\1_Tests\\Bad\\", i, ".tig");
 		EM_reset(buf);
 		analyze();
 	}

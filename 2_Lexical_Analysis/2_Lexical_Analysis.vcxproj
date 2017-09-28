@@ -198,10 +198,14 @@ copy /Y lex.yy.c ..\3_Parsing\ </Command>
       <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</Debug>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">lex.yy.c</OutputFile>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-      <BisonBridge Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</BisonBridge>
+      <BisonBridge Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </BisonBridge>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <BisonBridge Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</BisonBridge>
+      <BisonBridge Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </BisonBridge>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">lex.yy.c</OutputFile>
+      <Debug Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</Debug>
+      <Debug Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</Debug>
     </Flex>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

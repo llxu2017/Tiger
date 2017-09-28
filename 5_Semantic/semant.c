@@ -40,8 +40,8 @@ static Ty_ty actual_ty(S_table tenv, Ty_ty ty)
 
 static bool validate_ty(S_table tenv, Ty_ty ty1, Ty_ty ty2)
 {
-	if (ty1->kind == Ty_record && ty2->kind == Ty_nil ||
-		ty2->kind == Ty_record && ty1->kind == Ty_nil)
+	if (ty1 && ty2->kind == Ty_nil ||
+		ty2 && ty1->kind == Ty_nil)
 		return TRUE;
 	return actual_ty(tenv, ty1) == actual_ty(tenv, ty2);
 }
@@ -90,14 +90,16 @@ static struct expty handle_opExp(S_table venv, S_table tenv, A_exp a)
 	A_oper oper = a->u.op.oper;
 	struct expty left = transExp(venv, tenv, a->u.op.left);
 	struct expty right = transExp(venv, tenv, a->u.op.right);
+	if (actual_ty(tenv, left.ty)->kind == Ty_nil && actual_ty(tenv, left.ty)->kind == Ty_nil)
+		EM_error(a->u.op.right->pos, "two operands with unknown types.");
 	switch (oper) {
 	case A_plusOp:
 	case A_minusOp:
 	case A_timesOp:
 	case A_divideOp: {
-		if (actual_ty(tenv, left.ty)->kind != Ty_int)
+		if (!validate_ty(tenv, left.ty, Ty_Int()))
 			EM_error(a->u.op.left->pos, "integer required.");
-		if (actual_ty(tenv, right.ty)->kind != Ty_int)
+		if (!validate_ty(tenv, right.ty, Ty_Int()))
 			EM_error(a->u.op.right->pos, "integer required.");
 		return expTy(NULL, Ty_Int());
 	}
@@ -239,7 +241,7 @@ static struct expty handle_forExp(S_table venv, S_table tenv, A_exp a)
 static struct expty handle_breakExp(S_table venv, S_table tenv, A_exp a)
 {
 	assert(loop_depth >= 0);
-	if(!loop_depth)
+	if (!loop_depth)
 		EM_error(a->pos, "break can only be used in while or for loops.");
 	return (struct expty) { NULL, Ty_Void() };
 }
@@ -363,10 +365,14 @@ static void transVarDec(S_table venv, S_table tenv, A_dec d)
 	if (S_name(d->u.var.typ) != "NULL" && !x)
 		EM_error(d->pos, "undefined type \"%s\".", S_name(d->u.var.typ));
 	struct expty e = transExp(venv, tenv, d->u.var.init);
-	if (S_name(d->u.var.typ) != "NULL" && !validate_ty(tenv, x, e.ty) ||
-		S_name(d->u.var.typ) == "NULL" && e.ty->kind == Ty_nil)
+	if (S_name(d->u.var.typ) != "NULL" && !validate_ty(tenv, x, e.ty))
 		EM_error(d->u.var.init->pos, "var declaration type mismatch.");
-	S_enter(venv, d->u.var.var, E_VarEntry(e.ty));
+	if (S_name(d->u.var.typ) == "NULL" && e.ty->kind == Ty_nil)
+		EM_error(d->u.var.init->pos, "nil must has explicit type.");
+	if (S_name(d->u.var.typ) != "NULL" && e.ty->kind == Ty_nil)
+		S_enter(venv, d->u.var.var, E_VarEntry(x));
+	else
+		S_enter(venv, d->u.var.var, E_VarEntry(e.ty));
 }
 
 static void transTypeDec(S_table venv, S_table tenv, A_dec d)
