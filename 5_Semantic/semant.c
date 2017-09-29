@@ -140,8 +140,6 @@ static struct expty handle_recordExp(S_table venv, S_table tenv, A_exp a)
 		struct expty val = transExp(venv, tenv, e->head->exp);
 		if (!validate_ty(tenv, val.ty, Ty_Nil()) && !validate_ty(tenv, val.ty, f->head->ty))
 			EM_error(a->pos, "record field type mismatch.");
-		if (validate_ty(tenv, val.ty, Ty_Nil()) && actual_ty(tenv, f->head->ty)->kind != Ty_record)
-			EM_error(a->pos, "nil can only be assigned to record type.");
 	}
 	if (f || e)
 		EM_error(a->pos, "record length mismatch.");
