@@ -57,6 +57,9 @@
     <ClCompile Include="temp.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="translate.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="absyn.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="temp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="translate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

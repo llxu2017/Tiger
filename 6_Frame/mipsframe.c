@@ -27,7 +27,10 @@ static F_access InReg(Temp_temp reg)
 
 F_frame F_newFrame(Temp_label name, U_boolList formals)
 {
-
+	F_frame p = checked_malloc(sizeof(*p));
+	p->name = name;
+	p->formals = formals;
+	return p;
 }
 
 Temp_label F_name(F_frame f)

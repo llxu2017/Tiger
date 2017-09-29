@@ -128,6 +128,7 @@
     <ClCompile Include="table.c" />
     <ClCompile Include="temp.c" />
     <ClCompile Include="tiger.tab.c" />
+    <ClCompile Include="translate.c" />
     <ClCompile Include="types.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
@@ -143,6 +144,7 @@
     <ClInclude Include="table.h" />
     <ClInclude Include="temp.h" />
     <ClInclude Include="tiger.tab.h" />
+    <ClInclude Include="translate.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
