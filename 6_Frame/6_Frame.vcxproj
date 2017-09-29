@@ -120,11 +120,13 @@
     <ClCompile Include="env.c" />
     <ClCompile Include="errormsg.c" />
     <ClCompile Include="lex.yy.c" />
+    <ClCompile Include="mipsframe.c" />
     <ClCompile Include="parse.c" />
     <ClCompile Include="prabsyn.c" />
     <ClCompile Include="semant.c" />
     <ClCompile Include="symbol.c" />
     <ClCompile Include="table.c" />
+    <ClCompile Include="temp.c" />
     <ClCompile Include="tiger.tab.c" />
     <ClCompile Include="types.c" />
     <ClCompile Include="util.c" />
@@ -133,11 +135,13 @@
     <ClInclude Include="absyn.h" />
     <ClInclude Include="env.h" />
     <ClInclude Include="errormsg.h" />
+    <ClInclude Include="frame.h" />
     <ClInclude Include="parse.h" />
     <ClInclude Include="prabsyn.h" />
     <ClInclude Include="semant.h" />
     <ClInclude Include="symbol.h" />
     <ClInclude Include="table.h" />
+    <ClInclude Include="temp.h" />
     <ClInclude Include="tiger.tab.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="util.h" />

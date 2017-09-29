@@ -51,6 +51,12 @@
     <ClCompile Include="tiger.tab.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mipsframe.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="temp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="absyn.h">
@@ -84,6 +90,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tiger.tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="temp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
