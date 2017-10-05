@@ -5,6 +5,7 @@
 #include "util.h"
 #include "symbol.h"
 #include "types.h"
+#include "translate.h"
 
 typedef void *Tr_exp;
 

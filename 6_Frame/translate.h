@@ -1,9 +1,10 @@
 #ifndef TRANSLATE_H
 #define TRANSLATE_H
 
+#include "frame.h"
 #include "temp.h"
 
-typedef int Tr_level;
+typedef int Tr_level; //???
 
 
 typedef struct Tr_access_ *Tr_access;

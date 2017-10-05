@@ -10,7 +10,7 @@ struct F_frame_ { Temp_label name; U_boolList formals; };
 typedef struct F_access_ *F_access;
 
 typedef struct F_accessList_ *F_accessList;
-struct F_accessList_ { F_access head; F_access tail; };
+struct F_accessList_ { F_access head; F_accessList tail; };
 
 F_frame F_newFrame(Temp_label name, U_boolList formals);
 Temp_label F_name(F_frame f);

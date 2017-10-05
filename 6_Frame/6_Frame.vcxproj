@@ -119,6 +119,7 @@
     <ClCompile Include="absyn.c" />
     <ClCompile Include="env.c" />
     <ClCompile Include="errormsg.c" />
+    <ClCompile Include="escape.c" />
     <ClCompile Include="lex.yy.c" />
     <ClCompile Include="mipsframe.c" />
     <ClCompile Include="parse.c" />
@@ -136,6 +137,7 @@
     <ClInclude Include="absyn.h" />
     <ClInclude Include="env.h" />
     <ClInclude Include="errormsg.h" />
+    <ClInclude Include="escape.h" />
     <ClInclude Include="frame.h" />
     <ClInclude Include="parse.h" />
     <ClInclude Include="prabsyn.h" />

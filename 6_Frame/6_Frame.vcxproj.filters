@@ -60,6 +60,9 @@
     <ClCompile Include="translate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="escape.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="absyn.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="translate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="escape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
